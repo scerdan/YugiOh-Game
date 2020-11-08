@@ -1,4 +1,5 @@
-[{
+[{},
+    {
     "id": 36033786,
     "name": "Cyberse Wizard",
     "type": "Effect Monster",
@@ -8,6 +9,7 @@
     "level": 4,
     "race": "Cyberse",
     "attribute": "LIGHT",
+    "image_url": "https://storage.googleapis.com/ygoprodeck.com/pics/36033786.jpg",
     "card_sets": [{
         "set_name": "Code of the Duelist",
         "set_code": "COTD-EN001",
@@ -51,6 +53,7 @@
     "level": 4,
     "race": "Spellcaster",
     "attribute": "LIGHT",
+    "image_url": "https://storage.googleapis.com/ygoprodeck.com/pics/98555327.jpg",
     "card_sets": [{
         "set_name": "OTS Tournament Pack 9",
         "set_code": "OP09-EN005",
