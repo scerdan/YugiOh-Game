@@ -22,7 +22,6 @@ function traerdatosUser() {
     }
 };
 
-
 //FUNCION btn Npc
 document.getElementById('btn').addEventListener('click', traerdatos);
 let img = document.getElementById('imgD');
@@ -34,13 +33,14 @@ function traerdatos() {
     xhttp.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             let cardE = JSON.parse(this.responseText);
-            console.log(num);
-            var num = NumerosAleatorios(0, 23);
+            var num = NumerosAleatorios(1, 23);
             //Atributo del ID del elemento
             let cartaNpc = imgD.setAttribute('src', cardE[num].image_url);
+            console.log(cardE[num].atk);
         }
     }
 };
+
 function NumerosAleatorios(min, max) {
     return Math.round(Math.random() * (max - min) + min);
  }

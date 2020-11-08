@@ -31,10 +31,10 @@ span#btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.295);
+  color: rgba(255, 255, 255, 0.5);
   margin: 1rem 1rem;
   cursor: pointer;
-  background-color: rgba(15, 39, 255, 0.897);
+  background-color: rgba(0, 26, 255, 0.5);
   width: 10rem;
   height: 5vh;
   font-size: 2rem;
@@ -44,6 +44,44 @@ span#btn {
 span#btn:hover {
   color: white;
   background-color: #0f27ff;
+}
+
+span.atk {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 1rem;
+  cursor: pointer;
+  width: 10rem;
+  height: 5vh;
+  font-size: 2rem;
+  border-radius: 1rem;
+  background-color: rgba(255, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+span.def {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 1rem;
+  cursor: pointer;
+  width: 10rem;
+  height: 5vh;
+  font-size: 2rem;
+  border-radius: 1rem;
+  background-color: rgba(0, 255, 0, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+span.def:hover {
+  background-color: lime;
+  color: white;
+}
+
+span.atk:hover {
+  background-color: red;
+  color: white;
 }
 
 /*# sourceMappingURL=styles.css.map */

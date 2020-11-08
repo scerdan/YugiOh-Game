@@ -37,17 +37,53 @@ span#btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(255, 255, 255, 0.295);
+    color: rgba(255, 255, 255, 0.5);
     margin: 1rem 1rem;
     cursor: pointer;
-    background-color: rgba(15, 39, 255, 0.897);
+    background-color: rgba(0, 26, 255, 0.5);
     width: 10rem;
     height: 5vh;
     font-size: 2rem;
     border-radius: 1rem;
-};
+}
 
 span#btn:hover {
     color: rgb(255, 255, 255);
     background-color: rgb(15, 39, 255);
+}
+
+span.atk{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 1rem;
+    cursor: pointer;
+    width: 10rem;
+    height: 5vh;
+    font-size: 2rem;
+    border-radius: 1rem;
+    background-color: rgb(255, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+span.def{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 1rem;
+    cursor: pointer;
+    width: 10rem;
+    height: 5vh;
+    font-size: 2rem;
+    border-radius: 1rem;
+    background-color: rgb(0, 255, 0, 0.5);
+    color: rgba(255, 255, 255, 0.5);
+}
+span.def:hover {
+    background-color: rgb(0, 255, 0);
+    color: rgba(255, 255, 255);
+}
+span.atk:hover {
+    background-color: rgb(255, 0, 0);
+    color: rgba(255, 255, 255);
 }
