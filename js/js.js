@@ -21,9 +21,7 @@ function traerdatosUser() {
         }
     }
 };
-
 //FUNCION btn Npc
-document.getElementById('btn').addEventListener('click', traerdatos);
 let img = document.getElementById('imgD');
 function traerdatos() {
     //console.log('activamos la ft');
@@ -35,7 +33,7 @@ function traerdatos() {
             let cardE = JSON.parse(this.responseText);
             var num = NumerosAleatorios(1, 23);
             //Atributo del ID del elemento
-            let cartaNpc = imgD.setAttribute('src', cardE[num].image_url);
+            imgD.setAttribute('src', cardE[num].image_url);
             console.log(cardE[num].atk);
         }
     }
