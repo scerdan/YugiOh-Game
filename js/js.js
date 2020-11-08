@@ -10,7 +10,8 @@ function traerdatos() {
         if(this.readyState == 4 && this.status == 200){
             let cardE = JSON.parse(this.responseText);
             //console.log(cardE[0].image_url);
-            img.setAttribute('src', cardE[7].image_url)
+            img.setAttribute('src', cardE[22].image_url);
+            console.log(cardE[22].atk)
         }
     }
 };
