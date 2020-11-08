@@ -1,15 +1,41 @@
-//Se tiene que registrar usuario
+//Se registra los usuarios in sessionStorage
+function enviar(){
+    let correoUsuario = document.getElementById("mail").value;
+    let passUsuario = document.getElementById("pass").value;
 
-//Se tiene que loggear usuario
-
+    sessionStorage.setItem('Mail', correoUsuario);
+    sessionStorage.setItem('Password', passUsuario);
+    
+    console.log("Su correo es: "+sessionStorage.getItem('Mail'));
+    console.log("Su contrasenia es: "+sessionStorage.getItem('Password'));
+    console.log('Se ha registrado correctamente');
+}
+//Se loguea los usuarios in sessionStorage
+function acceso() {
+    let mailV = document.getElementById('mail').value;
+    let passV = document.getElementById('pass').value;
+    if (mailV == sessionStorage.getItem('Mail') && passV == sessionStorage.getItem('Password')) {
+        // User is signed in.
+        console.log('Estas adentro');
+        firstCard();
+    } else {
+        console.log('Debe estar registrado para poder Ingresar:');
+    }
+}
+//Logout
+function logout() {
+    sessionStorage.clear();
+    location.reload();
+    alert('Vuelvc Pronto!');
+  };
 //Debe elegir carta
-primerCarta = prompt('Elija su primer carta');
-console.log(primerCarta);
+function firstCard() {
+    primerCarta = prompt('Elija su primer carta');
+    imgg = document.getElementById('imgI');
+    traerdatosUser();
+};
 
 //FUNCION btn User
-let imgg = document.getElementById('imgI');
-traerdatosUser();
-
 function traerdatosUser() {
     //console.log('activamos la ft');
     const xhttp = new XMLHttpRequest();
@@ -26,7 +52,6 @@ function traerdatosUser() {
         }
     }
 };
-
 //FUNCION btn Npc
 let img = document.getElementById('imgD');
 
@@ -50,4 +75,3 @@ function traerdatos() {
 function NumerosAleatorios(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
-

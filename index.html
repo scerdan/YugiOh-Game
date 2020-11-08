@@ -8,9 +8,22 @@
     <title>proyecteDuel</title>
     <script type="text/javascript" src="./json/cartas.json"></script>
 </head>
-
 <body>
     <script src="./js/js.js"></script>
+    <header>
+        <h1>
+            TRADING CARD GAME
+        </h1>
+    </header>
+    <nav>
+        <div> 
+        <input type="email" name="email" id="mail" placeholder="User/Email">
+        <input type="password" name="password" id="pass" placeholder="Password">
+        <button onclick="acceso()">Login</button>
+        <button onclick="enviar()">Register</button>
+        <button onclick="logout()">Logout</button>
+    </div>
+    </nav>
     <main id="field">
         <div id="izquierda" class="col">
             <img src="" alt="" id="imgI">
@@ -24,7 +37,5 @@
             <img src="" alt="" id="imgD">
         </div>
     </main>
-
 </body>
-
 </html>
