@@ -1,13 +1,11 @@
 //Se registra los usuarios in sessionStorage
-function enviar(){
+function enviar() {
     let correoUsuario = document.getElementById("mail").value;
     let passUsuario = document.getElementById("pass").value;
-
     sessionStorage.setItem('Mail', correoUsuario);
     sessionStorage.setItem('Password', passUsuario);
-    
-    console.log("Su correo es: "+sessionStorage.getItem('Mail'));
-    console.log("Su contrasenia es: "+sessionStorage.getItem('Password'));
+    console.log("Su correo es: " + sessionStorage.getItem('Mail'));
+    console.log("Su contrasenia es: " + sessionStorage.getItem('Password'));
     console.log('Se ha registrado correctamente');
 }
 //Se loguea los usuarios in sessionStorage
@@ -15,9 +13,9 @@ function acceso() {
     let mailV = document.getElementById('mail').value;
     let passV = document.getElementById('pass').value;
     if (mailV == sessionStorage.getItem('Mail') && passV == sessionStorage.getItem('Password')) {
-        // User is signed in.
         console.log('Estas adentro');
-        firstCard();
+        logUser = document.getElementById('cortina');
+        logUser.setAttribute('id', 'abierta');
     } else {
         console.log('Debe estar registrado para poder Ingresar:');
     }
@@ -26,15 +24,8 @@ function acceso() {
 function logout() {
     sessionStorage.clear();
     location.reload();
-    alert('Vuelvc Pronto!');
-  };
-//Debe elegir carta
-function firstCard() {
-    primerCarta = prompt('Elija su primer carta');
-    imgg = document.getElementById('imgI');
-    traerdatosUser();
+    alert('Vuelva Pronto!');
 };
-
 //FUNCION btn User
 function traerdatosUser() {
     //console.log('activamos la ft');
@@ -44,6 +35,7 @@ function traerdatosUser() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             let cardE = JSON.parse(this.responseText);
+            let primerCarta = NumerosAleatorios(1, 420);
             //Atributo del ID del elemento
             imgI.setAttribute('src', cardE.data[primerCarta].card_images[0].image_url);
             // console.log(cardE.data[primerCarta].card_images[0].image_url);
