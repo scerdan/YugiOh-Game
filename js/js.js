@@ -2,12 +2,15 @@
 function enviar() {
     let correoUsuario = document.getElementById("mail").value;
     let passUsuario = document.getElementById("pass").value;
-    sessionStorage.setItem('Mail', correoUsuario);
-    sessionStorage.setItem('Password', passUsuario);
-    console.log("Su correo es: " + sessionStorage.getItem('Mail'));
-    console.log("Su contrasenia es: " + sessionStorage.getItem('Password'));
-    console.log('Se ha registrado correctamente');
-}
+
+    if (correoUsuario == '' || passUsuario == '') {
+        console.log("Debe ingresar un correo o pass validos");
+    } else {
+        sessionStorage.setItem('Mail', correoUsuario);
+        sessionStorage.setItem('Password', passUsuario);
+        console.log('Se ha registrado correctamente');
+  }
+};
 //Se loguea los usuarios in sessionStorage
 function acceso() {
     let mailV = document.getElementById('mail').value;
@@ -19,7 +22,8 @@ function acceso() {
     } else {
         console.log('Debe estar registrado para poder Ingresar:');
     }
-}
+};
+
 //Logout
 function logout() {
     sessionStorage.clear();
