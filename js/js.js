@@ -28,10 +28,14 @@ function acceso() {
 function logout() {
 	  document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(0vh);";
     console.log('Vuelva Pronto!');
-    // sessionStorage.clear();
-    // location.reload();
+    setTimeout(cerrar(), 1000);
 
+function cerrar() {
+    sessionStorage.clear();
+}
 };
+
+
 //FUNCION btn User
 function traerdatosUser() {
     const xhttp = new XMLHttpRequest();
@@ -43,6 +47,7 @@ function traerdatosUser() {
             let primerCarta = NumerosAleatorios(1, 420);
             //Atributo del ID del elemento
             imgI.setAttribute('src', cardE.data[primerCarta].card_images[0].image_url);
+            document.getElementById('imgI').style.cssText = "max-width: 98%; max-height: 98%;";
             nameCardUser = cardE.data[primerCarta].name;
             atkCardUser = cardE.data[primerCarta].atk;
             defCardUser = cardE.data[primerCarta].def;
@@ -63,19 +68,21 @@ function traerdatos() {
             let num = NumerosAleatorios(1, 420);
             //Atributo del ID del elemento
             imgD.setAttribute('src', cardE.data[num].card_images[0].image_url);
+            document.getElementById('imgD').style.cssText = "max-width: 98%; max-height: 98%;";
             nameCardNpc = cardE.data[num].name;
             atkCardNpc = cardE.data[num].atk;
             defCardNpc = cardE.data[num].def;
             console.log('El ataque de su oponente es: ' + atkCardNpc);
             saveDatosNpc();
         }
-        if (datosUser[1] > datosNPC[1]) {
-            console.log('Ha ganado!')
-        } else if (datosUser[1] < datosNPC[1]) {
-            console.log('Lo siento, Ha perdido!')
-        } else {
-            console.log('Empate!')
-        }
+        // if (datosUser[1] > datosNPC[1]) {
+        //     console.log('Ha ganado!')
+        //     document.getElementById('imgD').style.cssText = "transition: all 2s ease;transform: rotate(360deg);";
+        // } else if (datosUser[1] < datosNPC[1]) {
+        //     console.log('Lo siento, Ha perdido!')
+        // } else {
+        //     console.log('Empate!')
+        // }
     }
 };
 
