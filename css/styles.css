@@ -19,17 +19,16 @@ header {
 
 div#cortina {
   position: absolute;
-  height: 85vh;
+  top: 0;
+  left: 0;
+  height: 100%;
   width: 100%;
-  background-image: url(../img/logo.png);
   background-color: black;
+  background-image: url(../img/logo.png);
   background-repeat: no-repeat;
   background-position: 50% 50%;
   z-index: 2;
-}
-
-div#abierta {
-  display: none;
+  transition: all 2s ease;
 }
 
 nav {

@@ -24,17 +24,16 @@ header {
 
 div#cortina {
     position: absolute;
-    height: 85vh;
+    top: 0;
+    left: 0;
+    height: 100%;
     width: 100%;
+    background-color: black;
     background-image: url(../img/logo.png);
-    background-color: rgb(0, 0, 0);
     background-repeat: no-repeat;
     background-position: 50% 50%;
     z-index: 2;
-}
-
-div#abierta {
-    display: none;
+    transition: all 2s ease;
 }
 
 nav {
@@ -64,7 +63,6 @@ main {
     width: 80vw;
     height: 80vh;
     margin: 15vh 10vw auto 10vw;
-
     div.col {
         z-index: 1;
         background-color: $cTarj;
@@ -75,7 +73,9 @@ main {
     div#izquierda {
         display: flex;
         align-items: flex-end;
+
     }
+
 }
 
 span.btn {

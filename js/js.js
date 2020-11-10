@@ -16,17 +16,21 @@ function acceso() {
     let passV = document.getElementById('pass').value;
     if (mailV == sessionStorage.getItem('Mail') && passV == sessionStorage.getItem('Password')) {
         console.log('Estas adentro');
-        logUser = document.getElementById('cortina');
-        logUser.setAttribute('id', 'abierta');
+        // logUser = document.getElementById('cortina');
+        // logUser.setAttribute('id', 'abierta');
+        document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(-100vh);";
     } else {
         console.log('Debe estar registrado para poder Ingresar:');
     }
 };
+
 //Logout
 function logout() {
-    sessionStorage.clear();
-    location.reload();
-    alert('Vuelva Pronto!');
+	  document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(0vh);";
+    console.log('Vuelva Pronto!');
+    // sessionStorage.clear();
+    // location.reload();
+
 };
 //FUNCION btn User
 function traerdatosUser() {
@@ -47,6 +51,7 @@ function traerdatosUser() {
         }
     }
 };
+
 //FUNCION btn Npc
 function traerdatos() {
     const xhttp = new XMLHttpRequest();
@@ -83,10 +88,12 @@ let datosUser = [];
 
 function saveDatosNpc() {
     datosNPC.push(nameCardNpc, atkCardNpc, defCardNpc);
-    console.log(datosNPC);
 };
 
 function saveDatosUser() {
     datosUser.push(nameCardUser, atkCardUser, defCardUser);
-    console.log(datosUser);
 };
+
+
+
+
