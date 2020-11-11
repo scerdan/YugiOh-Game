@@ -19,29 +19,25 @@ function acceso() {
         // logUser = document.getElementById('cortina');
         // logUser.setAttribute('id', 'abierta');
         document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(-100vh);";
+
     } else {
         console.log('Debe estar registrado para poder Ingresar:');
     }
 };
-
 //Logout
 function logout() {
-	  document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(0vh);";
+    document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(0vh);";
     console.log('Vuelva Pronto!');
-    setTimeout(cerrar(), 1000);
-
-function cerrar() {
-    sessionStorage.clear();
-}
+        sessionStorage.clear();
+        // location.reload();
 };
-
 
 //FUNCION btn User
 function traerdatosUser() {
     const xhttp = new XMLHttpRequest();
     xhttp.open('GET', 'https://db.ygoprodeck.com/api/v7/cardinfo.php?type=XYZ%20Monster', true);
     xhttp.send();
-    xhttp.onreadystatechange = function () {
+    xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             let cardE = JSON.parse(this.responseText);
             let primerCarta = NumerosAleatorios(1, 420);
@@ -56,13 +52,12 @@ function traerdatosUser() {
         }
     }
 };
-
 //FUNCION btn Npc
 function traerdatos() {
     const xhttp = new XMLHttpRequest();
     xhttp.open('GET', 'https://db.ygoprodeck.com/api/v7/cardinfo.php?type=XYZ%20Monster', true);
     xhttp.send();
-    xhttp.onreadystatechange = function () {
+    xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             cardE = JSON.parse(this.responseText);
             let num = NumerosAleatorios(1, 420);
@@ -101,6 +96,13 @@ function saveDatosUser() {
     datosUser.push(nameCardUser, atkCardUser, defCardUser);
 };
 
+function animarAtk() {
+	if (atkCardUser > atkCardNpc) {
+            document.getElementById('imgD').style.cssText = "transform: scale(0.1); transition: all 2s ease";
+	} else if (atkCardUser < atkCardNpc) {
+            document.getElementById('imgI').style.cssText = "transform: scale(0.1); transition: all 2s ease";
+	} else {
+		console.log('Empateeee');
+	}
 
-
-
+}

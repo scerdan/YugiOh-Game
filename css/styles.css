@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap");
 * {
   padding: 0%;
   margin: 0%;
@@ -23,7 +24,7 @@ div#cortina {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: black;
+  background-color: #212121;
   background-image: url(../img/logo.png);
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -44,6 +45,7 @@ nav div {
 }
 
 h1 {
+  font-family: "Cinzel", serif;
   font-size: 3rem;
   color: white;
   padding: 1rem 1rem;
@@ -64,7 +66,7 @@ main div.col {
   align-items: center;
   justify-content: center;
   z-index: 1;
-  background-color: #000;
+  background-color: #121212;
   width: 28vw;
   height: 73vh;
 }

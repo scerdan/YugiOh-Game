@@ -2,10 +2,10 @@
     padding: 0%;
     margin: 0%;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap');
 //PALETA COLORES
 $cFondo: black;
-$cTarj: #655b30;
+$cTarj: #121212;
 
 
 body {
@@ -28,7 +28,7 @@ div#cortina {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: black;
+    background-color: #212121;
     background-image: url(../img/logo.png);
     background-repeat: no-repeat;
     background-position: 50% 50%;
@@ -50,6 +50,7 @@ nav {
 }
 
 h1 {
+    font-family: 'Cinzel', serif;
     font-size: 3rem;
     color: white;
     padding: 1rem 1rem;
@@ -71,11 +72,10 @@ main {
         align-items: center;
         justify-content: center;
         z-index: 1;
-        background-color: #000;
+        background-color: $cTarj;
         width: 28vw;
         height: 73vh;
         }
-
 }
 
 span.btn {
@@ -105,4 +105,5 @@ span.btn:hover {
 #atacar:hover {
     color: rgb(255, 255, 255, 0.75);
     background-color: rgb(255, 0, 0, 0.75);
+
 }
