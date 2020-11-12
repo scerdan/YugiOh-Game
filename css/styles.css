@@ -10,12 +10,57 @@ body {
   max-height: 100vh;
 }
 
+div.divBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: absolute;
+  top: 0;
+  background-color: #121212;
+  width: 100%;
+  height: 80vh;
+  margin: 10vh 0;
+}
+
 header {
   position: absolute;
   top: 0;
   width: 100%;
   height: min-content;
   z-index: 3;
+}
+header h1 {
+  font-family: "Cinzel", serif;
+  font-size: 3.3rem;
+  color: #cb0637;
+  padding: 1rem 1rem;
+  text-shadow: 0px 2px 15px black;
+}
+header nav {
+  position: absolute;
+  top: 2.3rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 3;
+}
+header nav div {
+  padding: 1rem 1rem;
+}
+header nav div input {
+  background-color: transparent;
+  color: white;
+}
+header nav div span.btnB {
+  font-family: "Cinzel", serif;
+  cursor: pointer;
+  color: white;
+  background-color: #0f27ff;
+  font-size: 1rem;
+  border-radius: 1rem;
+  border: 0.01rem white solid;
+  padding: 0 0.75rem;
 }
 
 div#cortina {
@@ -32,23 +77,23 @@ div#cortina {
   transition: all 2s ease;
 }
 
-nav {
+div#subCortina {
   position: absolute;
-  top: 0%;
-  width: 100%;
+  top: 10vh;
+  left: -100vw;
+  width: 100vw;
+  height: 10vh;
+  background-color: transparent;
+  z-index: 3;
+  transition: all 1s ease-in;
   display: flex;
   justify-content: flex-end;
-  z-index: 3;
 }
-nav div {
-  padding: 1rem 1rem;
-}
-
-h1 {
-  font-family: "Cinzel", serif;
-  font-size: 3rem;
-  color: white;
-  padding: 1rem 1rem;
+div#subCortina p {
+  font-size: 1rem;
+  color: green;
+  font-weight: bolder;
+  margin: 0.5rem 1rem 0 0;
 }
 
 main {
