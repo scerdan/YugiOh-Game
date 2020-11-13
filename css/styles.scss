@@ -77,13 +77,19 @@ nav {
         height: 15rem;
         background-color: #4e4e4e;
         border-radius: 1rem;
-        border: 1px solid black;
+        border: 1px solid rgb(255, 255, 255);
         overflow: hidden;
-
-        p#suc {
+        p#titulo {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            letter-spacing: -1px;
+            color: rgb(255, 255, 255);
             font-size: 1.5rem;
+        }
+        p#suc {
+            font-size: 1rem;
             position: absolute;
-            top: 0;
+            top: 1rem;
             left: -50%;
             text-align: center;
             color: rgb(4, 202, 4);

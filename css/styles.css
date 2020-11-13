@@ -67,13 +67,20 @@ nav div#botonera {
   height: 15rem;
   background-color: #4e4e4e;
   border-radius: 1rem;
-  border: 1px solid black;
+  border: 1px solid white;
   overflow: hidden;
 }
-nav div#botonera p#suc {
+nav div#botonera p#titulo {
+  text-align: center;
+  font-family: "Cinzel", serif;
+  letter-spacing: -1px;
+  color: white;
   font-size: 1.5rem;
+}
+nav div#botonera p#suc {
+  font-size: 1rem;
   position: absolute;
-  top: 0;
+  top: 1rem;
   left: -50%;
   text-align: center;
   color: #04ca04;

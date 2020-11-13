@@ -27,7 +27,7 @@ function enviar() {
         sessionStorage.setItem('Password', passUsuario);
         console.log('Se ha registrado correctamente');
         $("#suc").animate({
-            left: "33%",
+            left: "40%",
         }, 1000, );
         $("#suc").animate({
             opacity: '0',
@@ -54,7 +54,7 @@ function logout() {
     document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(0vh);";
     console.log('Vuelva Pronto!');
     sessionStorage.clear();
-    // location.reload();
+    location.reload();
 };
 
 //FUNCION btn User
