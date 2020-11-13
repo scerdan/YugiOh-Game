@@ -2,11 +2,10 @@
 let menu = document.querySelectorAll('#menu')[0];
 let fondo = document.querySelectorAll('nav')[0];
 
-menu.addEventListener('click', function(e){
+menu.addEventListener('click', function (e) {
     e.preventDefault();
     fondo.style.visibility = 'visible';
 });
-
 window.addEventListener('click', function (e) {
     if (e.target == fondo) {
         cerrarModal();
@@ -16,8 +15,6 @@ window.addEventListener('click', function (e) {
 function cerrarModal() {
     fondo.style.visibility = 'hidden';
 }
-
-
 
 //Se registra los usuarios in sessionStorage
 function enviar() {
@@ -29,6 +26,12 @@ function enviar() {
         sessionStorage.setItem('Mail', correoUsuario);
         sessionStorage.setItem('Password', passUsuario);
         console.log('Se ha registrado correctamente');
+        $("#suc").animate({
+            left: "33%",
+        }, 1000, );
+        $("#suc").animate({
+            opacity: '0',
+        }, 1500, );
     }
 };
 //Se loguea los usuarios in sessionStorage
@@ -43,8 +46,8 @@ function acceso() {
         console.log('Debe estar registrado para poder Ingresar:');
     }
 };
-function myFunction() {
-}
+
+function myFunction() {}
 setTimeout(myFunction, 3000);
 //Logout
 function logout() {

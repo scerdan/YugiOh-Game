@@ -68,6 +68,15 @@ nav div#botonera {
   background-color: #4e4e4e;
   border-radius: 1rem;
   border: 1px solid black;
+  overflow: hidden;
+}
+nav div#botonera p#suc {
+  font-size: 1.5rem;
+  position: absolute;
+  top: 0;
+  left: -50%;
+  text-align: center;
+  color: #04ca04;
 }
 nav div#botonera input {
   margin: -0.5rem 2rem;
@@ -99,25 +108,6 @@ div#cortina {
   transition: all 2s ease;
 }
 
-div#subCortina {
-  position: absolute;
-  top: 10vh;
-  left: -100vw;
-  width: 100vw;
-  height: 10vh;
-  background-color: transparent;
-  z-index: 3;
-  transition: all 1s ease-in;
-  display: flex;
-  justify-content: flex-end;
-}
-div#subCortina p {
-  font-size: 1rem;
-  color: green;
-  font-weight: bolder;
-  margin: 0.5rem 1rem 0 0;
-}
-
 main {
   display: flex;
   justify-content: space-evenly;
@@ -126,7 +116,7 @@ main {
   background-repeat: repeat-x;
   max-width: 100%;
   height: 80vh;
-  margin: 10vh 0;
+  margin: 15vh 0 5vh 0;
 }
 main div.col {
   display: flex;
@@ -139,44 +129,48 @@ main div.col {
 }
 
 span.btn {
+  font-family: "Caveat", cursive;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 1rem 1rem;
+  margin: 0.5rem 0 0.5rem 0;
   cursor: pointer;
   color: white;
-  background-color: #0f27ff;
+  background-color: #15118C;
+  letter-spacing: 1px;
   width: 10rem;
   height: 5vh;
-  font-size: 2rem;
+  font-size: 1.75rem;
   border-radius: 1rem;
-  border: 1px black solid;
+  box-shadow: 1px 1px 1px 1px white;
 }
 
 span.btn:hover {
-  color: rgba(255, 255, 255, 0.75);
-  background-color: rgba(0, 26, 255, 0.75);
+  box-shadow: 1px 1px 1px 1px rgba(255, 255, 255, 0);
 }
 
 #atacar {
   color: white;
-  background-color: red;
+  background-color: #D9043D;
 }
 
 #atacar:hover {
-  color: rgba(255, 255, 255, 0.75);
-  background-color: rgba(255, 0, 0, 0.75);
+  background-color: #d9043d50;
 }
 
 span.logout {
   font-family: "Caveat", cursive;
-  bottom: 2%;
+  bottom: 1%;
   right: 2%;
   position: absolute;
-  color: blanchedalmond;
+  color: white;
   font-size: 1.25rem;
   letter-spacing: 0.1rem;
   cursor: pointer;
+}
+
+span.logout:hover {
+  color: #D9043D;
 }
 
 /*# sourceMappingURL=styles.css.map */
