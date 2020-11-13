@@ -1,3 +1,24 @@
+//Menu animado
+let menu = document.querySelectorAll('#menu')[0];
+let fondo = document.querySelectorAll('nav')[0];
+
+menu.addEventListener('click', function(e){
+    e.preventDefault();
+    fondo.style.visibility = 'visible';
+});
+
+window.addEventListener('click', function (e) {
+    if (e.target == fondo) {
+        cerrarModal();
+    }
+});
+
+function cerrarModal() {
+    fondo.style.visibility = 'hidden';
+}
+
+
+
 //Se registra los usuarios in sessionStorage
 function enviar() {
     let correoUsuario = document.getElementById("mail").value;
@@ -8,8 +29,6 @@ function enviar() {
         sessionStorage.setItem('Mail', correoUsuario);
         sessionStorage.setItem('Password', passUsuario);
         console.log('Se ha registrado correctamente');
-        document.getElementById('subCortina').style.cssText = "transform: translateX(100vw);";
-        $('subCortina').fadeOut();
     }
 };
 //Se loguea los usuarios in sessionStorage
@@ -18,13 +37,15 @@ function acceso() {
     let passV = document.getElementById('pass').value;
     if (mailV == sessionStorage.getItem('Mail') && passV == sessionStorage.getItem('Password')) {
         console.log('Estas adentro');
-        // logUser = document.getElementById('cortina');
-        // logUser.setAttribute('id', 'abierta');
+        cerrarModal();
         document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(-100vh);";
     } else {
         console.log('Debe estar registrado para poder Ingresar:');
     }
 };
+function myFunction() {
+}
+setTimeout(myFunction, 3000);
 //Logout
 function logout() {
     document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(0vh);";

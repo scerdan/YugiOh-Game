@@ -11,26 +11,26 @@
 </head>
 
 <body>
-    <script src="./js/js.js"></script>
     <header>
         <h1>
             TRADING CARD GAME
         </h1>
-        <nav>
-            <div>
-                <input type="email" name="email" id="mail" placeholder="User/Email">
-                <input type="password" name="password" id="pass" placeholder="Password">
-                <span class="btnB" onclick="acceso()">Login</span>
-                <span class="btnB" onclick="enviar()">Register</span>
-                <span class="btnB" onclick="logout()">Logout</span>
-            </div>
-        </nav>
+        <img src="./img/menu.svg" alt="" id="menu">
     </header>
+    <nav>
+        <div id="botonera">
+            <input type="email" name="email" id="mail" placeholder="User/Email">
+            <input type="password" name="password" id="pass" placeholder="Password">
+            <span class="btnB" onclick="acceso()">Login</span>
+            <span class="btnB" onclick="enviar()">Register</span>
+            <!-- <span class="btnB" onclick="logout()">Logout</span> -->
+        </div>
+    </nav>
     <div id="cortina">
     </div>
     <div id="subCortina">
         <p>
-            SUCCESS!! 
+            SUCCESS!!
         </p>
     </div>
     <main id="field">
@@ -54,6 +54,8 @@
             <img src="" id="imgD">
         </div>
     </main>
+    <span class="logout" onclick="logout()">Logout</span>
+    <script src="./js/js.js"></script>
 </body>
 
 </html>
