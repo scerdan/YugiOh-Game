@@ -51,9 +51,9 @@ function crearCartas() {
     $("<div class= 'carta' id='new1' onclick='carta(this)'><img src='' id='imgB'></div>").appendTo("body");
     $("<div class= 'carta' id='new2' onclick='carta(this)'><img src='' id='imgC'></div>").appendTo("body");
 
-    $("<div class= 'cartaNpc' id='newN'><img src='' id='imgNA'></div>").appendTo("body");
-    $("<div class= 'cartaNpc' id='newN1'><img src='' id='imgNB'></div>").appendTo("body");
-    $("<div class= 'cartaNpc' id='newN2'><img src='' id='imgNC'></div>").appendTo("body");
+    $("<div class= 'cartaNpc' id='newN'><p>3</p><img src='' id='imgNA'></div>").appendTo("body");
+    $("<div class= 'cartaNpc' id='newN1'><p>2</p><img src='' id='imgNB'></div>").appendTo("body");
+    $("<div class= 'cartaNpc' id='newN2'><p>1</p><img src='' id='imgNC'></div>").appendTo("body");
 
     document.getElementById('new').style.cssText = "bottom: 0; left: 2%; background-color: black;";
     document.getElementById('imgA').style.cssText = "width: 100%; height: 100%;";
@@ -65,9 +65,9 @@ function crearCartas() {
     document.getElementById('newN').style.cssText = "top: 15vh; right: 2%; background-color: black; border:1px solid white;";
     document.getElementById('imgNA').style.cssText = "width: 100%; height: 100%; z-index: -1; visibility: hidden;";
     document.getElementById('newN1').style.cssText = "top: 15vh; right: 20%; background-color: black; border:1px solid white;";
-    document.getElementById('imgNB').style.cssText = "width: 100%; height: 100%;";
+    document.getElementById('imgNB').style.cssText = "width: 100%; height: 100%;  visibility: hidden;";
     document.getElementById('newN2').style.cssText = "top: 15vh; right: 38%; background-color: black; border:1px solid white;";
-    document.getElementById('imgNC').style.cssText = "width: 100%; height: 100%;";
+    document.getElementById('imgNC').style.cssText = "width: 100%; height: 100%;  visibility: hidden;";
 
     traerdatosUser();
     traerdatos();
@@ -89,7 +89,11 @@ function traerdatosUser() {
             imgA.setAttribute('src', cardE.data[primerCarta].card_images[0].image_url);
             imgB.setAttribute('src', cardE.data[segundaCarta].card_images[0].image_url);
             imgC.setAttribute('src', cardE.data[terceraCarta].card_images[0].image_url);
-
+            cartasUser = [];
+            cartasUser.push(cardE.data[primerCarta])[0];
+            cartasUser.push(cardE.data[segundaCarta])[1];
+            cartasUser.push(cardE.data[terceraCarta])[3];
+            console.log(cartasUser);
             saveDatosUser();
         }
     }
@@ -106,29 +110,29 @@ function traerdatos() {
             let segundaCarta = NumerosAleatorios(1, 420);
             let terceraCarta = NumerosAleatorios(1, 420);
             //Atributo del ID del elemento
-            //Atributo del ID del elemento
             imgNA.setAttribute('src', cardE.data[primerCarta].card_images[0].image_url);
             imgNB.setAttribute('src', cardE.data[segundaCarta].card_images[0].image_url);
             imgNC.setAttribute('src', cardE.data[terceraCarta].card_images[0].image_url);
-
+            cartasNpc = [];
+            cartasNpc.push(cardE.data[primerCarta])[0];
+            cartasNpc.push(cardE.data[segundaCarta])[1];
+            cartasNpc.push(cardE.data[terceraCarta])[3];
+            console.log(cartasNpc);
             saveDatosNpc();
         }
     };
 };
-
 function NumerosAleatorios(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
 // Datos de cartas seleccionadas
 let datosNPC = [];
 let datosUser = [];
-
 function saveDatosNpc() {
-    datosNPC.push(nameCardNpc, atkCardNpc, defCardNpc);
+    datosNPC.push(cartasNpc);
 };
-
 function saveDatosUser() {
-    datosUser.push(nameCardUser, atkCardUser, defCardUser);
+    datosUser.push(cartasUser);
 };
 
 // function animarAtk() {
