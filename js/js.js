@@ -1,7 +1,6 @@
 //Menu animado
 let menu = document.querySelectorAll('#menu')[0];
 let fondo = document.querySelectorAll('nav')[0];
-
 menu.addEventListener('click', function (e) {
     e.preventDefault();
     fondo.style.visibility = 'visible';
@@ -15,7 +14,6 @@ window.addEventListener('click', function (e) {
 function cerrarModal() {
     fondo.style.visibility = 'hidden';
 }
-
 //Se registra los usuarios in sessionStorage
 function enviar() {
     let correoUsuario = document.getElementById("mail").value;
@@ -42,20 +40,39 @@ function acceso() {
         console.log('Estas adentro');
         cerrarModal();
         document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(-100vh);";
+        crearCartas();
     } else {
         console.log('Debe estar registrado para poder Ingresar:');
     }
 };
 
-function myFunction() {}
-setTimeout(myFunction, 3000);
-//Logout
-function logout() {
-    document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(0vh);";
-    console.log('Vuelva Pronto!');
-    sessionStorage.clear();
-    location.reload();
-};
+function crearCartas() {
+    $("<div class= 'carta' id='new'><img src='' id='imgA' onclick='carta(this)'></div>").appendTo("body");
+    $("<div class= 'carta' id='new1' onclick='carta(this)'><img src='' id='imgB'></div>").appendTo("body");
+    $("<div class= 'carta' id='new2' onclick='carta(this)'><img src='' id='imgC'></div>").appendTo("body");
+
+    $("<div class= 'cartaNpc' id='newN'><img src='' id='imgNA'></div>").appendTo("body");
+    $("<div class= 'cartaNpc' id='newN1'><img src='' id='imgNB'></div>").appendTo("body");
+    $("<div class= 'cartaNpc' id='newN2'><img src='' id='imgNC'></div>").appendTo("body");
+
+    document.getElementById('new').style.cssText = "bottom: 0; left: 2%; background-color: black;";
+    document.getElementById('imgA').style.cssText = "width: 100%; height: 100%;";
+    document.getElementById('new1').style.cssText = "bottom: 0; left: 22%; background-color: black;";
+    document.getElementById('imgB').style.cssText = "width: 100%; height: 100%;";
+    document.getElementById('new2').style.cssText = "bottom: 0; left: 42%; background-color: black;";
+    document.getElementById('imgC').style.cssText = "width: 100%; height: 100%;";
+
+    document.getElementById('newN').style.cssText = "top: 15vh; right: 2%; background-color: black; border:1px solid white;";
+    document.getElementById('imgNA').style.cssText = "width: 100%; height: 100%; z-index: -1; visibility: hidden;";
+    document.getElementById('newN1').style.cssText = "top: 15vh; right: 20%; background-color: black; border:1px solid white;";
+    document.getElementById('imgNB').style.cssText = "width: 100%; height: 100%;";
+    document.getElementById('newN2').style.cssText = "top: 15vh; right: 38%; background-color: black; border:1px solid white;";
+    document.getElementById('imgNC').style.cssText = "width: 100%; height: 100%;";
+
+    traerdatosUser();
+    traerdatos();
+    //URGENTE AGREGAR 10 cartas con appendTo
+}
 
 //FUNCION btn User
 function traerdatosUser() {
@@ -66,13 +83,13 @@ function traerdatosUser() {
         if (this.readyState == 4 && this.status == 200) {
             let cardE = JSON.parse(this.responseText);
             let primerCarta = NumerosAleatorios(1, 420);
+            let segundaCarta = NumerosAleatorios(1, 420);
+            let terceraCarta = NumerosAleatorios(1, 420);
             //Atributo del ID del elemento
-            imgI.setAttribute('src', cardE.data[primerCarta].card_images[0].image_url);
-            document.getElementById('imgI').style.cssText = "max-width: 98%; max-height: 98%;";
-            nameCardUser = cardE.data[primerCarta].name;
-            atkCardUser = cardE.data[primerCarta].atk;
-            defCardUser = cardE.data[primerCarta].def;
-            console.log('El ataque de su carta es: ' + atkCardUser);
+            imgA.setAttribute('src', cardE.data[primerCarta].card_images[0].image_url);
+            imgB.setAttribute('src', cardE.data[segundaCarta].card_images[0].image_url);
+            imgC.setAttribute('src', cardE.data[terceraCarta].card_images[0].image_url);
+
             saveDatosUser();
         }
     }
@@ -85,25 +102,18 @@ function traerdatos() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             cardE = JSON.parse(this.responseText);
-            let num = NumerosAleatorios(1, 420);
+            let primerCarta = NumerosAleatorios(1, 420);
+            let segundaCarta = NumerosAleatorios(1, 420);
+            let terceraCarta = NumerosAleatorios(1, 420);
             //Atributo del ID del elemento
-            imgD.setAttribute('src', cardE.data[num].card_images[0].image_url);
-            document.getElementById('imgD').style.cssText = "max-width: 98%; max-height: 98%;";
-            nameCardNpc = cardE.data[num].name;
-            atkCardNpc = cardE.data[num].atk;
-            defCardNpc = cardE.data[num].def;
-            console.log('El ataque de su oponente es: ' + atkCardNpc);
+            //Atributo del ID del elemento
+            imgNA.setAttribute('src', cardE.data[primerCarta].card_images[0].image_url);
+            imgNB.setAttribute('src', cardE.data[segundaCarta].card_images[0].image_url);
+            imgNC.setAttribute('src', cardE.data[terceraCarta].card_images[0].image_url);
+
             saveDatosNpc();
         }
-        if (datosUser[1] > datosNPC[1]) {
-            console.log('Ha ganado!')
-            document.getElementById('imgD').style.cssText = "transition: all 2s ease;transform: rotate(360deg);";
-        } else if (datosUser[1] < datosNPC[1]) {
-            console.log('Lo siento, Ha perdido!')
-        } else {
-            console.log('Empate!')
-        }
-    }
+    };
 };
 
 function NumerosAleatorios(min, max) {
@@ -121,12 +131,21 @@ function saveDatosUser() {
     datosUser.push(nameCardUser, atkCardUser, defCardUser);
 };
 
-function animarAtk() {
-    if (atkCardUser > atkCardNpc) {
-        document.getElementById('imgD').style.cssText = "transform: scale(0.1); transition: all 2s ease";
-    } else if (atkCardUser < atkCardNpc) {
-        document.getElementById('imgI').style.cssText = "transform: scale(0.1); transition: all 2s ease";
-    } else {
-        console.log('Empateeee');
-    }
-}
+// function animarAtk() {
+//     // if (atkCardUser > atkCardNpc) {
+//     //     document.getElementById('imgD').style.cssText = "transform: scale(0.1); transition: all 2s ease";
+//     // } else if (atkCardUser < atkCardNpc) {
+//     //     document.getElementById('imgI').style.cssText = "transform: scale(0.1); transition: all 2s ease";
+//     // } else {
+//     //     console.log('Empateeee');
+//     // }
+//     $( "<div class='new'>aaaaaa</div>" ).appendTo( "body" );
+//  //URGENTE AGREGAR 10 cartas con appendTo
+// }
+
+function logout() {
+    document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(0vh);";
+    console.log('Vuelva Pronto!');
+    sessionStorage.clear();
+    location.reload();
+};
