@@ -199,6 +199,9 @@ div.carta {
     cursor: pointer;
     z-index: 1;
 }
+img {
+    transition: all 1s ease;
+}
 
 div.cartaNpc {
     width: 15%;
@@ -208,10 +211,7 @@ div.cartaNpc {
     z-index: 0;
 }
 
-
-
 div.cartaNpc {
-
     p {
         margin: 1rem 0 0 2rem;
         font-size: 6rem;

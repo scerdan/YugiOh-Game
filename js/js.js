@@ -47,23 +47,23 @@ function acceso() {
 };
 
 function crearCartas() {
-    $("<div class= 'carta' id='new'><img src='' id='imgA' onclick='carta(this)'></div>").appendTo("body");
-    $("<div class= 'carta' id='new1' onclick='carta(this)'><img src='' id='imgB'></div>").appendTo("body");
-    $("<div class= 'carta' id='new2' onclick='carta(this)'><img src='' id='imgC'></div>").appendTo("body");
+    $("<div class='carta' id='new' onclick='carta(this)'><img src='' id='imgA'></div>").appendTo("body");
+    $("<div class='carta' id='new1' onclick='carta(this)'><img src='' id='imgB'></div>").appendTo("body");
+    $("<div class='carta' id='new2' onclick='carta(this)'><img src='' id='imgC'></div>").appendTo("body");
 
-    $("<div class= 'cartaNpc' id='newN'><p>3</p><img src='' id='imgNA'></div>").appendTo("body");
-    $("<div class= 'cartaNpc' id='newN1'><p>2</p><img src='' id='imgNB'></div>").appendTo("body");
-    $("<div class= 'cartaNpc' id='newN2'><p>1</p><img src='' id='imgNC'></div>").appendTo("body");
+    $("<div class='cartaNpc' id='newN'><p>3</p><img src='' id='imgNA'></div>").appendTo("body");
+    $("<div class='cartaNpc' id='newN1'><p>2</p><img src='' id='imgNB'></div>").appendTo("body");
+    $("<div class='cartaNpc' id='newN2'><p>1</p><img src='' id='imgNC'></div>").appendTo("body");
 
-    document.getElementById('new').style.cssText = "bottom: 0; left: 2%; background-color: black;";
+    card1 = document.getElementById('new').style.cssText = "bottom: 0; left: 2%; background-color: black;";
     document.getElementById('imgA').style.cssText = "width: 100%; height: 100%;";
-    document.getElementById('new1').style.cssText = "bottom: 0; left: 22%; background-color: black;";
+    card2 = document.getElementById('new1').style.cssText = "bottom: 0; left: 22%; background-color: black;";
     document.getElementById('imgB').style.cssText = "width: 100%; height: 100%;";
-    document.getElementById('new2').style.cssText = "bottom: 0; left: 42%; background-color: black;";
+    card3 = document.getElementById('new2').style.cssText = "bottom: 0; left: 42%; background-color: black;";
     document.getElementById('imgC').style.cssText = "width: 100%; height: 100%;";
 
     document.getElementById('newN').style.cssText = "top: 15vh; right: 2%; background-color: black; border:1px solid white;";
-    document.getElementById('imgNA').style.cssText = "width: 100%; height: 100%; z-index: -1; visibility: hidden;";
+    document.getElementById('imgNA').style.cssText = "width: 100%; height: 100%; visibility: hidden;";
     document.getElementById('newN1').style.cssText = "top: 15vh; right: 20%; background-color: black; border:1px solid white;";
     document.getElementById('imgNB').style.cssText = "width: 100%; height: 100%;  visibility: hidden;";
     document.getElementById('newN2').style.cssText = "top: 15vh; right: 38%; background-color: black; border:1px solid white;";
@@ -73,6 +73,67 @@ function crearCartas() {
     traerdatos();
     //URGENTE AGREGAR 10 cartas con appendTo
 }
+
+function carta(p) {
+    //clickear carta
+    imgElegida = (p.children[0].id);
+    saveD = (p.children);
+    switch (imgElegida) {
+        case 'imgA':
+            animar1();
+            document.getElementById('imgA').style.cssText = "transform: scale(1);";
+            document.getElementById(p.id).style.cssText = "top: 20vh; left: 0; background-color: #15118c8c;width: 100%;height: 100%; z-index: 2;";
+            fondoSalir = document.querySelectorAll('div#new')[0];
+            fondoSalir.addEventListener('click', function () {
+                document.getElementById(p.id).style.cssText = card1;
+                document.getElementById('imgA').style.cssText = "width: 100%; height: 100%;";
+            });
+            break;
+        case 'imgB':
+            document.getElementById('imgB').style.cssText = "transform: scale(1);";
+            document.getElementById(p.id).style.cssText = "top: 20vh; left: 0; background-color: #15118c8c;width: 100%;height: 100%; z-index: 2;";
+            fondoSalir = document.querySelectorAll('div#new1')[0];
+            fondoSalir.addEventListener('click', function () {
+                document.getElementById(p.id).style.cssText = card2;
+                document.getElementById('imgB').style.cssText = "width: 100%; height: 100%;";
+            });
+            break;
+        case 'imgC':
+            document.getElementById('imgC').style.cssText = "transform: scale(1);";
+            document.getElementById(p.id).style.cssText = "top: 20vh; left: 0; background-color: #15118c8c;width: 100%;height: 100%; z-index: 2;";
+            fondoSalir = document.querySelectorAll('div#new2')[0];
+            fondoSalir.addEventListener('click', function () {
+                document.getElementById(p.id).style.cssText = card3;
+                document.getElementById('imgC').style.cssText = "width: 100%; height: 100%;";
+            });
+            break;
+        default:
+            break;
+    }
+    //mover y agrandar carta
+    //crear div por detras con color solido
+}
+
+function animar1() {
+    console.log(saveD);
+}
+
+
+
+
+
+
+// function imgCarta(e) {
+//     document.getElementById(e.id).style.cssText = "transform: scale(1); transition: all 1s ease;"
+
+// }
+
+
+
+
+
+
+
 
 //FUNCION btn User
 function traerdatosUser() {
@@ -122,15 +183,18 @@ function traerdatos() {
         }
     };
 };
+
 function NumerosAleatorios(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
 // Datos de cartas seleccionadas
 let datosNPC = [];
 let datosUser = [];
+
 function saveDatosNpc() {
     datosNPC.push(cartasNpc);
 };
+
 function saveDatosUser() {
     datosUser.push(cartasUser);
 };

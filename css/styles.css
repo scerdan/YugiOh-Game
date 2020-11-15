@@ -181,6 +181,10 @@ div.carta {
   z-index: 1;
 }
 
+img {
+  transition: all 1s ease;
+}
+
 div.cartaNpc {
   width: 15%;
   height: 18rem;
