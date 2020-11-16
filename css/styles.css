@@ -173,16 +173,13 @@ span.logout:hover {
   color: #D9043D;
 }
 
-div.carta {
+img {
   width: 19%;
   height: 25rem;
   position: absolute;
   cursor: pointer;
+  transition: all 1s ease-in;
   z-index: 1;
-}
-
-img {
-  transition: all 1s ease;
 }
 
 div.cartaNpc {
@@ -197,6 +194,29 @@ div.cartaNpc p {
   margin: 1rem 0 0 2rem;
   font-size: 6rem;
   color: white;
+}
+
+div.fondoCarta {
+  z-index: 1;
+  width: 95vw;
+  height: 90%;
+  left: 0;
+  position: absolute;
+  bottom: 0%;
+  background-color: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+}
+
+button#atk {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 10rem;
+  height: 4rem;
+  z-index: 4;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -47,20 +47,18 @@ function acceso() {
 };
 
 function crearCartas() {
-    $("<div class='carta' id='new' onclick='carta(this)'><img src='' id='imgA'></div>").appendTo("body");
-    $("<div class='carta' id='new1' onclick='carta(this)'><img src='' id='imgB'></div>").appendTo("body");
-    $("<div class='carta' id='new2' onclick='carta(this)'><img src='' id='imgC'></div>").appendTo("body");
-
+    $("<img class='carta' src='' id='imgA' onclick='carta(this)'>").appendTo("body");
+    $("<img class='carta' src='' id='imgB' onclick='carta(this)'>").appendTo("body");
+    $("<img class='carta' src='' id='imgC' onclick='carta(this)'>").appendTo("body");
+    $("<div class='fondoCarta' id='fCarta' onclick='salir(this)'></div>").appendTo("body");
     $("<div class='cartaNpc' id='newN'><p>3</p><img src='' id='imgNA'></div>").appendTo("body");
     $("<div class='cartaNpc' id='newN1'><p>2</p><img src='' id='imgNB'></div>").appendTo("body");
     $("<div class='cartaNpc' id='newN2'><p>1</p><img src='' id='imgNC'></div>").appendTo("body");
 
-    card1 = document.getElementById('new').style.cssText = "bottom: 0; left: 2%; background-color: black;";
-    document.getElementById('imgA').style.cssText = "width: 100%; height: 100%;";
-    card2 = document.getElementById('new1').style.cssText = "bottom: 0; left: 22%; background-color: black;";
-    document.getElementById('imgB').style.cssText = "width: 100%; height: 100%;";
-    card3 = document.getElementById('new2').style.cssText = "bottom: 0; left: 42%; background-color: black;";
-    document.getElementById('imgC').style.cssText = "width: 100%; height: 100%;";
+
+    document.getElementById('imgA').style.cssText = "bottom: 0; left: 2%;";
+    document.getElementById('imgB').style.cssText = "bottom: 0; left: 22%;";
+    document.getElementById('imgC').style.cssText = "bottom: 0; left: 42%;";
 
     document.getElementById('newN').style.cssText = "top: 15vh; right: 2%; background-color: black; border:1px solid white;";
     document.getElementById('imgNA').style.cssText = "width: 100%; height: 100%; visibility: hidden;";
@@ -75,65 +73,28 @@ function crearCartas() {
 }
 
 function carta(p) {
-    //clickear carta
-    imgElegida = (p.children[0].id);
-    saveD = (p.children);
-    switch (imgElegida) {
-        case 'imgA':
-            animar1();
-            document.getElementById('imgA').style.cssText = "transform: scale(1);";
-            document.getElementById(p.id).style.cssText = "top: 20vh; left: 0; background-color: #15118c8c;width: 100%;height: 100%; z-index: 2;";
-            fondoSalir = document.querySelectorAll('div#new')[0];
-            fondoSalir.addEventListener('click', function () {
-                document.getElementById(p.id).style.cssText = card1;
-                document.getElementById('imgA').style.cssText = "width: 100%; height: 100%;";
-            });
-            break;
-        case 'imgB':
-            document.getElementById('imgB').style.cssText = "transform: scale(1);";
-            document.getElementById(p.id).style.cssText = "top: 20vh; left: 0; background-color: #15118c8c;width: 100%;height: 100%; z-index: 2;";
-            fondoSalir = document.querySelectorAll('div#new1')[0];
-            fondoSalir.addEventListener('click', function () {
-                document.getElementById(p.id).style.cssText = card2;
-                document.getElementById('imgB').style.cssText = "width: 100%; height: 100%;";
-            });
-            break;
-        case 'imgC':
-            document.getElementById('imgC').style.cssText = "transform: scale(1);";
-            document.getElementById(p.id).style.cssText = "top: 20vh; left: 0; background-color: #15118c8c;width: 100%;height: 100%; z-index: 2;";
-            fondoSalir = document.querySelectorAll('div#new2')[0];
-            fondoSalir.addEventListener('click', function () {
-                document.getElementById(p.id).style.cssText = card3;
-                document.getElementById('imgC').style.cssText = "width: 100%; height: 100%;";
-            });
-            break;
-        default:
-            break;
+    idCard = p.id;
+        document.getElementById('fCarta').style.cssText = "visibility: visible;";
+    if (idCard === 'imgA') {
+        document.getElementById(idCard).style.cssText = "bottom: 10vh; left: 2%;width: 421px; height: 614px;z-index: 3";
+        $("<button id='atk'>Atacar</button>").appendTo("body");
+    } else if (idCard === 'imgB') {
+        document.getElementById(idCard).style.cssText = "bottom: 10vh; left: 22%;width: 421px; height: 614px;z-index: 3";
+    } else if (idCard === 'imgC') {
+        document.getElementById(idCard).style.cssText = "bottom: 10vh; left: 42%;;width: 421px; height: 614px;z-index: 3";
     }
-    //mover y agrandar carta
-    //crear div por detras con color solido
-}
+};
 
-function animar1() {
-    console.log(saveD);
-}
-
-
-
-
-
-
-// function imgCarta(e) {
-//     document.getElementById(e.id).style.cssText = "transform: scale(1); transition: all 1s ease;"
-
-// }
-
-
-
-
-
-
-
+function salir() {
+    document.getElementById('fCarta').style.cssText = "visibility: hidden;";
+    if (idCard === 'imgA') {s
+        document.getElementById(idCard).style.cssText = "bottom: 0; left: 2%; width: 19%; height: 25rem;";
+    } else if (idCard === 'imgB') {
+        document.getElementById(idCard).style.cssText = "bottom: 0; left: 22%; width: 19%; height: 25rem;";
+    } else if (idCard === 'imgC') {
+        document.getElementById(idCard).style.cssText = "bottom: 0; left: 42%; width: 19%; height: 25rem;";
+    }
+};
 
 //FUNCION btn User
 function traerdatosUser() {
