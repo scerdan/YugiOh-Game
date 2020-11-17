@@ -193,7 +193,7 @@ span.logout:hover {
 }
 
 
-img {
+img.carta {
     width: 19%;
     height: 25rem;
     position: absolute;
@@ -201,7 +201,7 @@ img {
     transition: all 400ms ease-in;
     z-index: 1;
 }
-img:hover {
+img.carta:hover {
     width: 421px;
     height: 614px;
     z-index: 3;
@@ -215,6 +215,7 @@ div.cartaNpc {
     cursor: pointer;
     z-index: 0;
     transition: all 200ms ease-in;
+    background-color: black;
     p {
         margin: 1rem 0 0 2rem;
         font-size: 6rem;

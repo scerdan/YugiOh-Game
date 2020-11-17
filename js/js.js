@@ -52,41 +52,42 @@ function crearCartas() {
     $("<img class='carta' src='' id='imgA' onclick='carta(this)'>").appendTo("body");
     $("<img class='carta' src='' id='imgB' onclick='carta(this)'>").appendTo("body");
     $("<img class='carta' src='' id='imgC' onclick='carta(this)'>").appendTo("body");
-
     $("<div class='cartaNpc' id='newN'><p>3</p><img src='' id='imgNA'></div>").appendTo("body");
     $("<div class='cartaNpc' id='newN1'><p>2</p><img src='' id='imgNB'></div>").appendTo("body");
     $("<div class='cartaNpc' id='newN2'><p>1</p><img src='' id='imgNC'></div>").appendTo("body");
-
-
     document.getElementById('imgA').style.cssText = "bottom: 0; left: 2%;";
     document.getElementById('imgB').style.cssText = "bottom: 0; left: 22%;";
     document.getElementById('imgC').style.cssText = "bottom: 0; left: 42%;";
-
     document.getElementById('newN').style.cssText = "top: 15vh; right: 2%; background-color: black; border:1px solid white;";
     document.getElementById('imgNA').style.cssText = "width: 100%; height: 100%; visibility: hidden;";
     document.getElementById('newN1').style.cssText = "top: 15vh; right: 20%; background-color: black; border:1px solid white;";
     document.getElementById('imgNB').style.cssText = "width: 100%; height: 100%;  visibility: hidden;";
     document.getElementById('newN2').style.cssText = "top: 15vh; right: 38%; background-color: black; border:1px solid white;";
     document.getElementById('imgNC').style.cssText = "width: 100%; height: 100%;  visibility: hidden;";
-
     traerdatosUser();
     traerdatos();
-    //URGENTE AGREGAR 10 cartas con appendTo
-}
-
-
-function carta() {
-    // let idSeleccionado = e.id;
-    // document.getElementById(idSeleccionado).style.cssText = "bottom: 20vh; left: 2%;";
-    // if (idSeleccionado === 'imgA') {
-    //     console.log('Ha elegido la carta: '+datosUser[0]);
-    // } else if (idSeleccionado === 'imaB') {
-    //     console.log('Ha elegido la carta: '+datosUser[1]);
-    // } else if (idSeleccionado === 'imaC') {
-    //     console.log('Ha elegido la carta: '+datosUser[2]);
-    // };
 };
 
+function carta(p) {
+    let ccc = p.id;
+    console.log(ccc);
+    if (ccc === 'imgA') {
+        document.getElementById('imgA').style.cssText = "bottom: 0; left: 2%;box-shadow: 0px 0px 40px #00ff0d; ";
+        console.log(cartasUser[0]);
+    } else if (ccc === 'imgB') {
+        document.getElementById('imgB').style.cssText = "bottom: 0; left: 22%;box-shadow: 0px 0px 40px #00ff0d; ";
+        console.log(cartasUser[1]);
+    } else if (ccc === 'imgC') {
+        document.getElementById('imgC').style.cssText = "bottom: 0; left: 42%;box-shadow: 0px 0px 40px #00ff0d; ";
+        console.log(cartasUser[2]);
+    };
+};
+//CREAR FUNCION QUE SELECCIONE NPC CARD Y LA MUESTRE
+// Datos de cartas seleccionadas
+let datosNPC = [];
+let datosUser = [];
+let cartasUser = [];
+let cartasNpc = [];
 //FUNCION btn User
 function traerdatosUser() {
     const xhttp = new XMLHttpRequest();
@@ -109,6 +110,10 @@ function traerdatosUser() {
             saveDatosUser();
         }
     }
+};
+
+function saveDatosUser() {
+    datosUser.push(cartasUser);
 };
 //FUNCION btn Npc
 function traerdatos() {
@@ -133,24 +138,17 @@ function traerdatos() {
     };
 };
 
-function NumerosAleatorios(min, max) {
-    return Math.round(Math.random() * (max - min) + min);
-}
-// Datos de cartas seleccionadas
-let datosNPC = [];
-let datosUser = [];
-let cartasUser = [];
-let cartasNpc = [];
-console.log(datosNPC);
-console.log(datosUser);
-
 function saveDatosNpc() {
     datosNPC.push(cartasNpc);
 };
 
-function saveDatosUser() {
-    datosUser.push(cartasUser);
-};
+function NumerosAleatorios(min, max) {
+    return Math.round(Math.random() * (max - min) + min);
+}
+
+console.log(cartasNpc);
+console.log(cartasUser);
+
 
 // function animarAtk() {
 //     // if (atkCardUser > atkCardNpc) {
