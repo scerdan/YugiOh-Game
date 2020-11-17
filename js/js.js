@@ -1,3 +1,5 @@
+'use strict';
+
 //Menu animado
 let menu = document.querySelectorAll('#menu')[0];
 let fondo = document.querySelectorAll('nav')[0];
@@ -50,7 +52,7 @@ function crearCartas() {
     $("<img class='carta' src='' id='imgA' onclick='carta(this)'>").appendTo("body");
     $("<img class='carta' src='' id='imgB' onclick='carta(this)'>").appendTo("body");
     $("<img class='carta' src='' id='imgC' onclick='carta(this)'>").appendTo("body");
-    $("<div class='fondoCarta' id='fCarta' onclick='salir(this)'></div>").appendTo("body");
+
     $("<div class='cartaNpc' id='newN'><p>3</p><img src='' id='imgNA'></div>").appendTo("body");
     $("<div class='cartaNpc' id='newN1'><p>2</p><img src='' id='imgNB'></div>").appendTo("body");
     $("<div class='cartaNpc' id='newN2'><p>1</p><img src='' id='imgNC'></div>").appendTo("body");
@@ -72,28 +74,17 @@ function crearCartas() {
     //URGENTE AGREGAR 10 cartas con appendTo
 }
 
-function carta(p) {
-    idCard = p.id;
-        document.getElementById('fCarta').style.cssText = "visibility: visible;";
-    if (idCard === 'imgA') {
-        document.getElementById(idCard).style.cssText = "bottom: 10vh; left: 2%;width: 421px; height: 614px;z-index: 3";
-        $("<button id='atk'>Atacar</button>").appendTo("body");
-    } else if (idCard === 'imgB') {
-        document.getElementById(idCard).style.cssText = "bottom: 10vh; left: 22%;width: 421px; height: 614px;z-index: 3";
-    } else if (idCard === 'imgC') {
-        document.getElementById(idCard).style.cssText = "bottom: 10vh; left: 42%;;width: 421px; height: 614px;z-index: 3";
-    }
-};
 
-function salir() {
-    document.getElementById('fCarta').style.cssText = "visibility: hidden;";
-    if (idCard === 'imgA') {s
-        document.getElementById(idCard).style.cssText = "bottom: 0; left: 2%; width: 19%; height: 25rem;";
-    } else if (idCard === 'imgB') {
-        document.getElementById(idCard).style.cssText = "bottom: 0; left: 22%; width: 19%; height: 25rem;";
-    } else if (idCard === 'imgC') {
-        document.getElementById(idCard).style.cssText = "bottom: 0; left: 42%; width: 19%; height: 25rem;";
-    }
+function carta() {
+    // let idSeleccionado = e.id;
+    // document.getElementById(idSeleccionado).style.cssText = "bottom: 20vh; left: 2%;";
+    // if (idSeleccionado === 'imgA') {
+    //     console.log('Ha elegido la carta: '+datosUser[0]);
+    // } else if (idSeleccionado === 'imaB') {
+    //     console.log('Ha elegido la carta: '+datosUser[1]);
+    // } else if (idSeleccionado === 'imaC') {
+    //     console.log('Ha elegido la carta: '+datosUser[2]);
+    // };
 };
 
 //FUNCION btn User
@@ -111,11 +102,10 @@ function traerdatosUser() {
             imgA.setAttribute('src', cardE.data[primerCarta].card_images[0].image_url);
             imgB.setAttribute('src', cardE.data[segundaCarta].card_images[0].image_url);
             imgC.setAttribute('src', cardE.data[terceraCarta].card_images[0].image_url);
-            cartasUser = [];
+
             cartasUser.push(cardE.data[primerCarta])[0];
             cartasUser.push(cardE.data[segundaCarta])[1];
             cartasUser.push(cardE.data[terceraCarta])[3];
-            console.log(cartasUser);
             saveDatosUser();
         }
     }
@@ -127,7 +117,7 @@ function traerdatos() {
     xhttp.send();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            cardE = JSON.parse(this.responseText);
+            let cardE = JSON.parse(this.responseText);
             let primerCarta = NumerosAleatorios(1, 420);
             let segundaCarta = NumerosAleatorios(1, 420);
             let terceraCarta = NumerosAleatorios(1, 420);
@@ -135,11 +125,9 @@ function traerdatos() {
             imgNA.setAttribute('src', cardE.data[primerCarta].card_images[0].image_url);
             imgNB.setAttribute('src', cardE.data[segundaCarta].card_images[0].image_url);
             imgNC.setAttribute('src', cardE.data[terceraCarta].card_images[0].image_url);
-            cartasNpc = [];
             cartasNpc.push(cardE.data[primerCarta])[0];
             cartasNpc.push(cardE.data[segundaCarta])[1];
             cartasNpc.push(cardE.data[terceraCarta])[3];
-            console.log(cartasNpc);
             saveDatosNpc();
         }
     };
@@ -151,6 +139,10 @@ function NumerosAleatorios(min, max) {
 // Datos de cartas seleccionadas
 let datosNPC = [];
 let datosUser = [];
+let cartasUser = [];
+let cartasNpc = [];
+console.log(datosNPC);
+console.log(datosUser);
 
 function saveDatosNpc() {
     datosNPC.push(cartasNpc);
