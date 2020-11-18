@@ -21,11 +21,11 @@ function enviar() {
     let correoUsuario = document.getElementById("mail").value;
     let passUsuario = document.getElementById("pass").value;
     if (correoUsuario == '' || passUsuario == '') {
-        console.log("Debe ingresar un correo o pass validos");
+        alert("Debe ingresar un correo o pass validos");
     } else {
         sessionStorage.setItem('Mail', correoUsuario);
         sessionStorage.setItem('Password', passUsuario);
-        console.log('Se ha registrado correctamente');
+        alert('Se ha registrado correctamente');
         $("#suc").animate({
             left: "40%",
         }, 1500, );
@@ -44,7 +44,7 @@ function acceso() {
         cerrarModal();
         document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(-100vh);";
     } else {
-        console.log('Debe estar registrado para poder Ingresar:');
+        alert('Debe estar registrado para poder Ingresar:');
     }
 };
 
@@ -63,17 +63,17 @@ function carta(p) {
     let ccc = p.id;
     console.log(ccc);
     if (ccc === 'imgA') {
-        document.getElementById('imgA').style.cssText = "bottom: 15vh; left: 2%;box-shadow: 0px 0px 50px #ffff00;opacity: 1;";
+        document.getElementById('imgA').style.cssText = "bottom: 20%; left: 2%;box-shadow: 0px 0px 50px #ffff00;opacity: 1;";
         console.log(cartasUser[0]);
         document.getElementById('imgB').style.cssText = "bottom: 0; left: 22%;opacity: 0.25;";
         document.getElementById('imgC').style.cssText = "bottom: 0; left: 42%;opacity: 0.25;";
     } else if (ccc === 'imgB') {
-        document.getElementById('imgB').style.cssText = "bottom: 15vh; left: 22%;box-shadow: 0px 0px 50px #ffff00;opacity: 1; ";
+        document.getElementById('imgB').style.cssText = "bottom: 20%; left: 2%;box-shadow: 0px 0px 50px #ffff00;opacity: 1;";
         document.getElementById('imgA').style.cssText = "bottom: 0; left: 2%;opacity: 0.25;";
         document.getElementById('imgC').style.cssText = "bottom: 0; left: 42%;opacity: 0.25;";
         console.log(cartasUser[1]);
     } else if (ccc === 'imgC') {
-        document.getElementById('imgC').style.cssText = "bottom: 15vh; left: 42%;box-shadow: 0px 0px 50px #ffff00;opacity: 1; ";
+        document.getElementById('imgC').style.cssText = "bottom: 20%; left: 2%;box-shadow: 0px 0px 50px #ffff00;opacity: 1;";
         document.getElementById('imgA').style.cssText = "bottom: 0; left: 2%;opacity: 0.25;";
         document.getElementById('imgB').style.cssText = "bottom: 0; left: 22%;opacity: 0.25;";
         console.log(cartasUser[2]);
@@ -140,7 +140,7 @@ function saveDatosNpc() {
 };
 
 function NumerosAleatorios(min, max) {
-    return Math.round(Math.random() * (max - min) + min);
+    return Math.round(Math.random() * (max - min) + Math.random());
 }
 
 console.log(cartasNpc);
