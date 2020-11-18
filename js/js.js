@@ -28,7 +28,7 @@ function enviar() {
         console.log('Se ha registrado correctamente');
         $("#suc").animate({
             left: "40%",
-        }, 1000, );
+        }, 1500, );
         $("#suc").animate({
             opacity: '0',
         }, 1500, );
@@ -40,9 +40,9 @@ function acceso() {
     let passV = document.getElementById('pass').value;
     if (mailV == sessionStorage.getItem('Mail') && passV == sessionStorage.getItem('Password')) {
         console.log('Estas adentro');
+        crearCartas();
         cerrarModal();
         document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(-100vh);";
-        crearCartas();
     } else {
         console.log('Debe estar registrado para poder Ingresar:');
     }
@@ -55,15 +55,6 @@ function crearCartas() {
     $("<div class='cartaNpc' id='newN'><p>3</p><img src='' id='imgNA'></div>").appendTo("body");
     $("<div class='cartaNpc' id='newN1'><p>2</p><img src='' id='imgNB'></div>").appendTo("body");
     $("<div class='cartaNpc' id='newN2'><p>1</p><img src='' id='imgNC'></div>").appendTo("body");
-    document.getElementById('imgA').style.cssText = "bottom: 0; left: 2%;";
-    document.getElementById('imgB').style.cssText = "bottom: 0; left: 22%;";
-    document.getElementById('imgC').style.cssText = "bottom: 0; left: 42%;";
-    document.getElementById('newN').style.cssText = "top: 15vh; right: 2%; background-color: black; border:1px solid white;";
-    document.getElementById('imgNA').style.cssText = "width: 100%; height: 100%; visibility: hidden;";
-    document.getElementById('newN1').style.cssText = "top: 15vh; right: 20%; background-color: black; border:1px solid white;";
-    document.getElementById('imgNB').style.cssText = "width: 100%; height: 100%;  visibility: hidden;";
-    document.getElementById('newN2').style.cssText = "top: 15vh; right: 38%; background-color: black; border:1px solid white;";
-    document.getElementById('imgNC').style.cssText = "width: 100%; height: 100%;  visibility: hidden;";
     traerdatosUser();
     traerdatos();
 };
@@ -72,13 +63,19 @@ function carta(p) {
     let ccc = p.id;
     console.log(ccc);
     if (ccc === 'imgA') {
-        document.getElementById('imgA').style.cssText = "bottom: 0; left: 2%;box-shadow: 0px 0px 40px #00ff0d; ";
+        document.getElementById('imgA').style.cssText = "bottom: 15vh; left: 2%;box-shadow: 0px 0px 50px #ffff00;opacity: 1;";
         console.log(cartasUser[0]);
+        document.getElementById('imgB').style.cssText = "bottom: 0; left: 22%;opacity: 0.25;";
+        document.getElementById('imgC').style.cssText = "bottom: 0; left: 42%;opacity: 0.25;";
     } else if (ccc === 'imgB') {
-        document.getElementById('imgB').style.cssText = "bottom: 0; left: 22%;box-shadow: 0px 0px 40px #00ff0d; ";
+        document.getElementById('imgB').style.cssText = "bottom: 15vh; left: 22%;box-shadow: 0px 0px 50px #ffff00;opacity: 1; ";
+        document.getElementById('imgA').style.cssText = "bottom: 0; left: 2%;opacity: 0.25;";
+        document.getElementById('imgC').style.cssText = "bottom: 0; left: 42%;opacity: 0.25;";
         console.log(cartasUser[1]);
     } else if (ccc === 'imgC') {
-        document.getElementById('imgC').style.cssText = "bottom: 0; left: 42%;box-shadow: 0px 0px 40px #00ff0d; ";
+        document.getElementById('imgC').style.cssText = "bottom: 15vh; left: 42%;box-shadow: 0px 0px 50px #ffff00;opacity: 1; ";
+        document.getElementById('imgA').style.cssText = "bottom: 0; left: 2%;opacity: 0.25;";
+        document.getElementById('imgB').style.cssText = "bottom: 0; left: 22%;opacity: 0.25;";
         console.log(cartasUser[2]);
     };
 };
