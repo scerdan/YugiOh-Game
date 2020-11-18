@@ -52,9 +52,9 @@ function crearCartas() {
     $("<img class='carta' src='' id='imgA' onclick='carta(this)'>").appendTo("body");
     $("<img class='carta' src='' id='imgB' onclick='carta(this)'>").appendTo("body");
     $("<img class='carta' src='' id='imgC' onclick='carta(this)'>").appendTo("body");
-    $("<div class='cartaNpc' id='newN'><p>3</p><img src='' id='imgNA'></div>").appendTo("body");
-    $("<div class='cartaNpc' id='newN1'><p>2</p><img src='' id='imgNB'></div>").appendTo("body");
-    $("<div class='cartaNpc' id='newN2'><p>1</p><img src='' id='imgNC'></div>").appendTo("body");
+    $("<div class='carta' id='newN' onclick='cartaNPC(this)'><p>3</p><img src='' id='imgNA'></div>").appendTo("body");
+    $("<div class='carta' id='newN1'><p>2</p><img src='' id='imgNB'></div>").appendTo("body");
+    $("<div class='carta' id='newN2'><p>1</p><img src='' id='imgNC'></div>").appendTo("body");
     traerdatosUser();
     traerdatos();
 };
@@ -63,10 +63,11 @@ function carta(p) {
     let ccc = p.id;
     console.log(ccc);
     if (ccc === 'imgA') {
-        document.getElementById('imgA').style.cssText = "bottom: 20%; left: 2%;box-shadow: 0px 0px 50px #ffff00;opacity: 1;";
+        document.getElementById('imgA').style.cssText = "bottom: 20%; left: 2%;box-shadow: 0px 0px 50px #ffff00;opacity: 1; width: auto;";
         console.log(cartasUser[0]);
         document.getElementById('imgB').style.cssText = "bottom: 0; left: 22%;opacity: 0.25;";
         document.getElementById('imgC').style.cssText = "bottom: 0; left: 42%;opacity: 0.25;";
+        chocar();
     } else if (ccc === 'imgB') {
         document.getElementById('imgB').style.cssText = "bottom: 20%; left: 2%;box-shadow: 0px 0px 50px #ffff00;opacity: 1;";
         document.getElementById('imgA').style.cssText = "bottom: 0; left: 2%;opacity: 0.25;";
@@ -79,6 +80,37 @@ function carta(p) {
         console.log(cartasUser[2]);
     };
 };
+function cartaNPC(p) {
+    let ccc = p.id;
+    console.log(ccc);
+    if (ccc === 'newN') {
+        document.getElementById('newN').style.cssText = "visibility: hidden;";
+        document.getElementById('imgNA').style.cssText = "visibility: visible;bottom: 0;box-shadow: 0px 0px 50px #ffff00;opacity: 1; height: 25rem; width: auto;position: absolute;";
+        console.log(cartasNpc[0]);
+        document.getElementById('newN1').style.cssText = "opacity: 0.25;";
+        document.getElementById('newN2').style.cssText = "opacity: 0.25;";
+    // } else if (ccc === 'imgB') {
+    //     document.getElementById('newN').style.cssText = "visibility: hidden;";
+    //     document.getElementById('imgNA').style.cssText = "visibility: visible;bottom: 0;box-shadow: 0px 0px 50px #ffff00;opacity: 1; height: 25rem; width: auto;position: absolute;";
+    //     console.log(cartasNpc[1]);
+
+    // } else if (ccc === 'imgC') {
+    //     document.getElementById('newN').style.cssText = "visibility: hidden;";
+    //     document.getElementById('imgNA').style.cssText = "visibility: visible;bottom: 0;box-shadow: 0px 0px 50px #ffff00;opacity: 1; height: 25rem; width: auto;position: absolute;";
+    //     console.log(cartasNpc[2]);
+
+    };
+};
+
+function chocar() {
+    $('#imgA').animate({
+        left: "50%",
+    }, 500, );
+    $('#imgA').animate({
+        rotate: "45"
+    }, 1500, );
+}
+
 //CREAR FUNCION QUE SELECCIONE NPC CARD Y LA MUESTRE
 // Datos de cartas seleccionadas
 let datosNPC = [];
