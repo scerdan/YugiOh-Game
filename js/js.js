@@ -25,7 +25,6 @@ function enviar() {
     } else {
         sessionStorage.setItem('Mail', correoUsuario);
         sessionStorage.setItem('Password', passUsuario);
-        alert('Se ha registrado correctamente');
         $("#suc").animate({
             left: "40%",
         }, 1500, );
@@ -41,20 +40,23 @@ function acceso() {
     if (mailV == sessionStorage.getItem('Mail') && passV == sessionStorage.getItem('Password')) {
         console.log('Estas adentro');
         traerdatosUser();
+        $("header").children("img").remove();
         $("<div class='tapete'></div>").appendTo("body");
         cerrarModal();
         crearCartas();
-        $("#cortina").animate({top: "-100vh"}, 1250);
+        $("#cortina").animate({
+            top: "-100vh"
+        }, 1250);
     } else {
         alert('Debe estar registrado para poder Ingresar:');
     }
 };
 
 function crearCartas() {
-    $("<img class='carta' src='' id='imgA' onclick='carta(this)'>").appendTo($( ".tapete" ));
-    $("<img class='carta' src='' id='imgB' onclick='carta(this)'>").appendTo($( ".tapete" ));
-    $("<img class='carta' src='' id='imgC' onclick='carta(this)'>").appendTo($( ".tapete" ));
-    $("<img class='carta' src='' id='imgD' onclick='carta(this)'>").appendTo($( ".tapete" ));
+    $("<img class='carta' src='' id='imgA' onclick='carta(this)'>").appendTo($(".tapete"));
+    $("<img class='carta' src='' id='imgB' onclick='carta(this)'>").appendTo($(".tapete"));
+    $("<img class='carta' src='' id='imgC' onclick='carta(this)'>").appendTo($(".tapete"));
+    $("<img class='carta' src='' id='imgD' onclick='carta(this)'>").appendTo($(".tapete"));
 };
 
 function carta(p) {
@@ -80,22 +82,23 @@ function carta(p) {
 };
 
 function optionCard(p) {
-    $('<div id="contenedor"></div>').appendTo($( ".tapete" ));
-    $('<button id="def" onclick="defender()">Defender</button>').appendTo($( "#contenedor" ));
-    $('<button id="atk" onclick="atacar()">Atacar</button>').appendTo($( "#contenedor" ));
-    $('<p id="desc"></p>').appendTo($( "#contenedor" ));
-    $('<h3></h3>').appendTo($( "#contenedor" ));
+    $('<div id="contenedor"></div>').appendTo($(".tapete"));
+    $('<button id="def" onclick="atkOrDef()">Defender</button>').appendTo($("#contenedor"));
+    $('<button id="atk" onclick="atkOrDef()">Atacar</button>').appendTo($("#contenedor"));
+    $('<p id="desc"></p>').appendTo($("#contenedor"));
+    $('<h3></h3>').appendTo($("#contenedor"));
     $("p").html(cartasUser[p].desc);
     $("h3").html(cartasUser[p].name);
 }
 
-function atacar() {
+function atkOrDef() {
     //guargar dato ataque o def
     //borrar #contenedor
     console.log(datosNPC);
     $("#contenedor").empty();
-    $("<img class='carta elegir' src='' id='imgNpc'>").appendTo($( ".tapete" ));
+    $("<img class='carta elegir' src='' id='imgNpc'>").appendTo($(".tapete"));
     traerdatos();
+    setTimeout
 }
 
 
@@ -176,7 +179,7 @@ function traerdatos() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             let cardE = JSON.parse(this.responseText);
-            let primerCarta = NumerosAleatorios(1, 420)-1;
+            let primerCarta = NumerosAleatorios(1, 420) - 1;
             imgNpc.setAttribute('src', cardE.data[primerCarta].card_images[0].image_url);
             //Atributo del ID del elemento
             cartasNpc.push(cardE.data[primerCarta])[0];
@@ -190,7 +193,7 @@ function saveDatosNpc() {
 };
 
 function NumerosAleatorios(min, max) {
-    return Math.round(Math.random() * (max - min) + + Math.random());
+    return Math.round(Math.random() * (max - min) + +Math.random());
 }
 
 console.log(cartasNpc);
