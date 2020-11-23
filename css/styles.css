@@ -227,11 +227,11 @@ div#contenedor h3 {
   font-size: 2rem;
   font-weight: bold;
 }
-div#contenedor button {
-  display: block;
-  width: 50%;
-  height: 5rem;
-  background-color: white;
+
+img#imgNpc {
+  position: absolute;
+  top: 0%;
+  right: 0;
 }
 
 /*# sourceMappingURL=styles.css.map */

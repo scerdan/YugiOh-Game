@@ -41,7 +41,6 @@ function acceso() {
     if (mailV == sessionStorage.getItem('Mail') && passV == sessionStorage.getItem('Password')) {
         console.log('Estas adentro');
         traerdatosUser();
-        traerdatos();
         $("<div class='tapete'></div>").appendTo("body");
         cerrarModal();
         crearCartas();
@@ -60,7 +59,6 @@ function crearCartas() {
 
 function carta(p) {
     let ccc = p.id;
-    console.log(ccc);
     if (ccc === 'imgA') {
         // console.log(cartasUser[0]);
         $('#imgA').addClass('elegir');
@@ -82,15 +80,24 @@ function carta(p) {
 };
 
 function optionCard(p) {
-    console.log(cartasUser[p]);
     $('<div id="contenedor"></div>').appendTo($( ".tapete" ));
-    $('<button>Defender</button>').appendTo($( "#contenedor" ));
-    $('<button>Atacar</button>').appendTo($( "#contenedor" ));
+    $('<button id="def" onclick="defender()">Defender</button>').appendTo($( "#contenedor" ));
+    $('<button id="atk" onclick="atacar()">Atacar</button>').appendTo($( "#contenedor" ));
     $('<p id="desc"></p>').appendTo($( "#contenedor" ));
     $('<h3></h3>').appendTo($( "#contenedor" ));
     $("p").html(cartasUser[p].desc);
     $("h3").html(cartasUser[p].name);
 }
+
+function atacar() {
+    //guargar dato ataque o def
+    //borrar #contenedor
+    console.log(datosNPC);
+    $("#contenedor").empty();
+    $("<img class='carta elegir' src='' id='imgNpc'>").appendTo($( ".tapete" ));
+    traerdatos();
+}
+
 
 // function cartaNPC(p) {
 //     let ccc = p.id;
@@ -169,15 +176,10 @@ function traerdatos() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             let cardE = JSON.parse(this.responseText);
-            let primerCarta = NumerosAleatorios(1, 420);
-            let segundaCarta = NumerosAleatorios(1, 420);
-            let terceraCarta = NumerosAleatorios(1, 420);
-            let cuartaCarta = NumerosAleatorios(1, 420);
+            let primerCarta = NumerosAleatorios(1, 420)-1;
+            imgNpc.setAttribute('src', cardE.data[primerCarta].card_images[0].image_url);
             //Atributo del ID del elemento
             cartasNpc.push(cardE.data[primerCarta])[0];
-            cartasNpc.push(cardE.data[segundaCarta])[1];
-            cartasNpc.push(cardE.data[terceraCarta])[2];
-            cartasNpc.push(cardE.data[terceraCarta])[3];
             saveDatosNpc();
         }
     };
@@ -188,7 +190,7 @@ function saveDatosNpc() {
 };
 
 function NumerosAleatorios(min, max) {
-    return Math.round(Math.random() * (max - min) + Math.random());
+    return Math.round(Math.random() * (max - min) + + Math.random());
 }
 
 console.log(cartasNpc);
