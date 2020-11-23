@@ -42,10 +42,10 @@ function acceso() {
         console.log('Estas adentro');
         traerdatosUser();
         traerdatos();
-        cerrarModal();
-        document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(-100vh);";
         $("<div class='tapete'></div>").appendTo("body");
+        cerrarModal();
         crearCartas();
+        $("#cortina").animate({top: "-100vh"}, 1250);
     } else {
         alert('Debe estar registrado para poder Ingresar:');
     }
@@ -62,20 +62,35 @@ function carta(p) {
     let ccc = p.id;
     console.log(ccc);
     if (ccc === 'imgA') {
-        console.log(cartasUser[0]);
+        // console.log(cartasUser[0]);
         $('#imgA').addClass('elegir');
         $('#imgB, #imgC, #imgD').addClass('ocultar');
+        optionCard(0);
     } else if (ccc === 'imgB') {
         $('#imgB').addClass('elegir');
         $('#imgA, #imgC, #imgD').addClass('ocultar');
+        optionCard(1);
     } else if (ccc === 'imgC') {
         $('#imgC').addClass('elegir');
         $('#imgA, #imgB, #imgD').addClass('ocultar');
+        optionCard(2);
     } else if (ccc === 'imgD') {
         $('#imgD').addClass('elegir');
         $('#imgB, #imgC, #imgA').addClass('ocultar');
+        optionCard(3);
     };
 };
+
+function optionCard(p) {
+    console.log(cartasUser[p]);
+    $('<div id="contenedor"></div>').appendTo($( ".tapete" ));
+    $('<button>Defender</button>').appendTo($( "#contenedor" ));
+    $('<button>Atacar</button>').appendTo($( "#contenedor" ));
+    $('<p id="desc"></p>').appendTo($( "#contenedor" ));
+    $('<h3></h3>').appendTo($( "#contenedor" ));
+    $("p").html(cartasUser[p].desc);
+    $("h3").html(cartasUser[p].name);
+}
 
 // function cartaNPC(p) {
 //     let ccc = p.id;
@@ -134,10 +149,10 @@ function traerdatosUser() {
             imgB.setAttribute('src', cardE.data[segundaCarta].card_images[0].image_url);
             imgC.setAttribute('src', cardE.data[terceraCarta].card_images[0].image_url);
             imgD.setAttribute('src', cardE.data[cuartaCarta].card_images[0].image_url);
-
             cartasUser.push(cardE.data[primerCarta])[0];
             cartasUser.push(cardE.data[segundaCarta])[1];
-            cartasUser.push(cardE.data[terceraCarta])[3];
+            cartasUser.push(cardE.data[terceraCarta])[2];
+            cartasUser.push(cardE.data[cuartaCarta])[3];
             saveDatosUser();
         }
     }
@@ -157,12 +172,11 @@ function traerdatos() {
             let primerCarta = NumerosAleatorios(1, 420);
             let segundaCarta = NumerosAleatorios(1, 420);
             let terceraCarta = NumerosAleatorios(1, 420);
+            let cuartaCarta = NumerosAleatorios(1, 420);
             //Atributo del ID del elemento
-            imgNA.setAttribute('src', cardE.data[primerCarta].card_images[0].image_url);
-            imgNB.setAttribute('src', cardE.data[segundaCarta].card_images[0].image_url);
-            imgNC.setAttribute('src', cardE.data[terceraCarta].card_images[0].image_url);
             cartasNpc.push(cardE.data[primerCarta])[0];
             cartasNpc.push(cardE.data[segundaCarta])[1];
+            cartasNpc.push(cardE.data[terceraCarta])[2];
             cartasNpc.push(cardE.data[terceraCarta])[3];
             saveDatosNpc();
         }
