@@ -194,85 +194,78 @@ span.logout:hover {
 
 
 img.carta {
-    width: 19%;
-    height: 25rem;
-    position: absolute;
+    width: 20%;
+    height: 90%;
     cursor: pointer;
     transition: all 400ms ease-in;
     z-index: 1;
 }
 
-#imgA {
-    bottom: 0;
-    left: 2%;
-}
+// #imgB {
+//     bottom: 0;
+//     left: 22%;
+// }
 
-#imgB {
-    bottom: 0;
-    left: 22%;
-}
+// #imgC {
+//     bottom: 0;
+//     left: 42%;
+// }
 
-#imgC {
-    bottom: 0;
-    left: 42%;
-}
+// img.carta:hover {
+//     width: 421px;
+//     height: 614px;
+//     z-index: 3;
+//     transition: all 400ms ease-in;
+//     box-shadow: 0px 0px 40px #00ff0d;
+// }
 
-#newN {
-    position: absolute;
-    top: 15vh;
-    right: 2%;
-    background-color: black;
-    border: 1px solid white;
-}
-
-#imgNA,
-#imgNB,
-#imgNC {
-    visibility: hidden;
-}
-
-#newN1 {
-    position: absolute;
-    top: 15vh;
-    right: 22%;
-    background-color: black;
-    border: 1px solid white;
-}
-
-#newN2 {
-    position: absolute;
-    top: 15vh;
-    right: 42%;
-    background-color: black;
-    border: 1px solid white;
-}
-
-img.carta:hover {
-    width: 421px;
-    height: 614px;
-    z-index: 3;
-    transition: all 400ms ease-in;
-    box-shadow: 0px 0px 40px #00ff0d;
-}
-
-
-div.carta {
-    width: 19%;
-    height: 25rem;
-    position: absolute;
-    cursor: pointer;
-    z-index: 0;
-    transition: all 200ms ease-in;
-    background-color: black;
-
-    p {
-        margin: 1rem 0 0 2rem;
-        font-size: 6rem;
-        color: white;
-    }
-}
+// div.carta {
+//     width: 19%;
+//     height: 25rem;
+//     position: absolute;
+//     cursor: pointer;
+//     z-index: 0;
+//     transition: all 200ms ease-in;
+//     background-color: black;
+// }
 
 .carta:hover {
-    transition: all 200ms ease-in;
-    box-shadow: 0px 0px 40px #ff0000;
+    transition: all 100ms ease-in;
+    box-shadow: 0px 0px 100px #ffffffa8;
+}
+
+div.tapete {
+    position: absolute;
+    bottom: 20vh;
+    margin: 0 5vw;
+    width: 90vw;
+    height: 50vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.elegir {
+    box-shadow: 0px 0px 35px #ffff00;
+    opacity: 1;
+    position: absolute;
+    margin: auto auto;
+    transition: all 500ms ease;
+    transform: scale(1.5);
+}
+.ocultar {
+    display: none;
+}
+
+#btnUser {
+    color: white;
+    position: absolute;
+    right: 0;
+}
+p.rr {
+    font-size: 2rem;
+    background-color: rgb(255, 0, 0);
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
 }

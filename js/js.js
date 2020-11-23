@@ -40,76 +40,76 @@ function acceso() {
     let passV = document.getElementById('pass').value;
     if (mailV == sessionStorage.getItem('Mail') && passV == sessionStorage.getItem('Password')) {
         console.log('Estas adentro');
-        crearCartas();
+        traerdatosUser();
+        traerdatos();
         cerrarModal();
         document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(-100vh);";
+        $("<div class='tapete'></div>").appendTo("body");
+        crearCartas();
     } else {
         alert('Debe estar registrado para poder Ingresar:');
     }
 };
 
 function crearCartas() {
-    $("<img class='carta' src='' id='imgA' onclick='carta(this)'>").appendTo("body");
-    $("<img class='carta' src='' id='imgB' onclick='carta(this)'>").appendTo("body");
-    $("<img class='carta' src='' id='imgC' onclick='carta(this)'>").appendTo("body");
-    $("<div class='carta' id='newN' onclick='cartaNPC(this)'><p>3</p><img src='' id='imgNA'></div>").appendTo("body");
-    $("<div class='carta' id='newN1'><p>2</p><img src='' id='imgNB'></div>").appendTo("body");
-    $("<div class='carta' id='newN2'><p>1</p><img src='' id='imgNC'></div>").appendTo("body");
-    traerdatosUser();
-    traerdatos();
+    $("<img class='carta' src='' id='imgA' onclick='carta(this)'>").appendTo($( ".tapete" ));
+    $("<img class='carta' src='' id='imgB' onclick='carta(this)'>").appendTo($( ".tapete" ));
+    $("<img class='carta' src='' id='imgC' onclick='carta(this)'>").appendTo($( ".tapete" ));
+    $("<img class='carta' src='' id='imgD' onclick='carta(this)'>").appendTo($( ".tapete" ));
 };
 
 function carta(p) {
     let ccc = p.id;
     console.log(ccc);
     if (ccc === 'imgA') {
-        document.getElementById('imgA').style.cssText = "bottom: 20%; left: 2%;box-shadow: 0px 0px 50px #ffff00;opacity: 1; width: auto;";
         console.log(cartasUser[0]);
-        document.getElementById('imgB').style.cssText = "bottom: 0; left: 22%;opacity: 0.25;";
-        document.getElementById('imgC').style.cssText = "bottom: 0; left: 42%;opacity: 0.25;";
-        chocar();
+        $('#imgA').addClass('elegir');
+        $('#imgB, #imgC, #imgD').addClass('ocultar');
     } else if (ccc === 'imgB') {
-        document.getElementById('imgB').style.cssText = "bottom: 20%; left: 2%;box-shadow: 0px 0px 50px #ffff00;opacity: 1;";
-        document.getElementById('imgA').style.cssText = "bottom: 0; left: 2%;opacity: 0.25;";
-        document.getElementById('imgC').style.cssText = "bottom: 0; left: 42%;opacity: 0.25;";
-        console.log(cartasUser[1]);
+        $('#imgB').addClass('elegir');
+        $('#imgA, #imgC, #imgD').addClass('ocultar');
     } else if (ccc === 'imgC') {
-        document.getElementById('imgC').style.cssText = "bottom: 20%; left: 2%;box-shadow: 0px 0px 50px #ffff00;opacity: 1;";
-        document.getElementById('imgA').style.cssText = "bottom: 0; left: 2%;opacity: 0.25;";
-        document.getElementById('imgB').style.cssText = "bottom: 0; left: 22%;opacity: 0.25;";
-        console.log(cartasUser[2]);
-    };
-};
-function cartaNPC(p) {
-    let ccc = p.id;
-    console.log(ccc);
-    if (ccc === 'newN') {
-        document.getElementById('newN').style.cssText = "visibility: hidden;";
-        document.getElementById('imgNA').style.cssText = "visibility: visible;bottom: 0;box-shadow: 0px 0px 50px #ffff00;opacity: 1; height: 25rem; width: auto;position: absolute;";
-        console.log(cartasNpc[0]);
-        document.getElementById('newN1').style.cssText = "opacity: 0.25;";
-        document.getElementById('newN2').style.cssText = "opacity: 0.25;";
-    // } else if (ccc === 'imgB') {
-    //     document.getElementById('newN').style.cssText = "visibility: hidden;";
-    //     document.getElementById('imgNA').style.cssText = "visibility: visible;bottom: 0;box-shadow: 0px 0px 50px #ffff00;opacity: 1; height: 25rem; width: auto;position: absolute;";
-    //     console.log(cartasNpc[1]);
-
-    // } else if (ccc === 'imgC') {
-    //     document.getElementById('newN').style.cssText = "visibility: hidden;";
-    //     document.getElementById('imgNA').style.cssText = "visibility: visible;bottom: 0;box-shadow: 0px 0px 50px #ffff00;opacity: 1; height: 25rem; width: auto;position: absolute;";
-    //     console.log(cartasNpc[2]);
-
+        $('#imgC').addClass('elegir');
+        $('#imgA, #imgB, #imgD').addClass('ocultar');
+    } else if (ccc === 'imgD') {
+        $('#imgD').addClass('elegir');
+        $('#imgB, #imgC, #imgA').addClass('ocultar');
     };
 };
 
-function chocar() {
-    $('#imgA').animate({
-        left: "50%",
-    }, 500, );
-    $('#imgA').animate({
-        rotate: "45"
-    }, 1500, );
-}
+// function cartaNPC(p) {
+//     let ccc = p.id;
+//     console.log(ccc);
+//     if (ccc === 'newN') {
+//         document.getElementById('newN').style.cssText = "visibility: hidden;";
+//         document.getElementById('imgNA').style.cssText = "visibility: visible;bottom: 0;box-shadow: 0px 0px 50px #ffff00;opacity: 1; height: 25rem; width: auto;position: absolute;";
+//         $( "imgNA" ).addClass( "yourClass" );
+
+//     };
+//     //     console.log(cartasNpc[0]);
+//     //     document.getElementById('newN1').style.cssText = "opacity: 0.25;";
+//     //     document.getElementById('newN2').style.cssText = "opacity: 0.25;";
+//     // } else if (ccc === 'newN1') {
+//     //     document.getElementById('newN1').style.cssText = "visibility: hidden;";
+//     //     document.getElementById('imgNA').style.cssText = "visibility: visible;bottom: 0;box-shadow: 0px 0px 50px #ffff00;opacity: 1; height: 25rem; width: auto;position: absolute;";
+//     //     console.log(cartasNpc[1]);
+
+//     // } else if (ccc === 'newN2') {
+//     //     document.getElementById('newN2').style.cssText = "visibility: hidden;";
+//     //     document.getElementById('imgNA').style.cssText = "visibility: visible;bottom: 0;box-shadow: 0px 0px 50px #ffff00;opacity: 1; height: 25rem; width: auto;position: absolute;";
+//     //     console.log(cartasNpc[2]);
+
+//     // };
+// };
+
+// function chocar() {
+//     $('#imgA').animate({
+//         left: "50%",
+//     }, 500, );
+//     $('#imgA').animate({
+//         rotate: "45"
+//     }, 1500, );
+// }
 
 //CREAR FUNCION QUE SELECCIONE NPC CARD Y LA MUESTRE
 // Datos de cartas seleccionadas
@@ -128,10 +128,12 @@ function traerdatosUser() {
             let primerCarta = NumerosAleatorios(1, 420);
             let segundaCarta = NumerosAleatorios(1, 420);
             let terceraCarta = NumerosAleatorios(1, 420);
+            let cuartaCarta = NumerosAleatorios(1, 420);
             //Atributo del ID del elemento
             imgA.setAttribute('src', cardE.data[primerCarta].card_images[0].image_url);
             imgB.setAttribute('src', cardE.data[segundaCarta].card_images[0].image_url);
             imgC.setAttribute('src', cardE.data[terceraCarta].card_images[0].image_url);
+            imgD.setAttribute('src', cardE.data[cuartaCarta].card_images[0].image_url);
 
             cartasUser.push(cardE.data[primerCarta])[0];
             cartasUser.push(cardE.data[segundaCarta])[1];
