@@ -40,6 +40,7 @@ function acceso() {
     if (mailV == sessionStorage.getItem('Mail') && passV == sessionStorage.getItem('Password')) {
         console.log('Estas adentro');
         traerdatosUser();
+        traerdatos();
         $("header").children("img").remove();
         $("<div class='tapete'></div>").appendTo("body");
         cerrarModal();
@@ -83,58 +84,13 @@ function carta(p) {
 
 function optionCard(p) {
     $('<div id="contenedor"></div>').appendTo($(".tapete"));
-    $('<button id="def" onclick="atkOrDef()">Defender</button>').appendTo($("#contenedor"));
-    $('<button id="atk" onclick="atkOrDef()">Atacar</button>').appendTo($("#contenedor"));
+    $('<button id="def" onclick="atkOrDef(this)">Defender</button>').appendTo($("#contenedor"));
+    $('<button id="atk" onclick="atkOrDef(this)">Atacar</button>').appendTo($("#contenedor"));
     $('<p id="desc"></p>').appendTo($("#contenedor"));
     $('<h3></h3>').appendTo($("#contenedor"));
     $("p").html(cartasUser[p].desc);
     $("h3").html(cartasUser[p].name);
 }
-
-function atkOrDef() {
-    //guargar dato ataque o def
-    //borrar #contenedor
-    console.log(datosNPC);
-    $("#contenedor").empty();
-    $("<img class='carta elegir' src='' id='imgNpc'>").appendTo($(".tapete"));
-    traerdatos();
-    setTimeout
-}
-
-
-// function cartaNPC(p) {
-//     let ccc = p.id;
-//     console.log(ccc);
-//     if (ccc === 'newN') {
-//         document.getElementById('newN').style.cssText = "visibility: hidden;";
-//         document.getElementById('imgNA').style.cssText = "visibility: visible;bottom: 0;box-shadow: 0px 0px 50px #ffff00;opacity: 1; height: 25rem; width: auto;position: absolute;";
-//         $( "imgNA" ).addClass( "yourClass" );
-
-//     };
-//     //     console.log(cartasNpc[0]);
-//     //     document.getElementById('newN1').style.cssText = "opacity: 0.25;";
-//     //     document.getElementById('newN2').style.cssText = "opacity: 0.25;";
-//     // } else if (ccc === 'newN1') {
-//     //     document.getElementById('newN1').style.cssText = "visibility: hidden;";
-//     //     document.getElementById('imgNA').style.cssText = "visibility: visible;bottom: 0;box-shadow: 0px 0px 50px #ffff00;opacity: 1; height: 25rem; width: auto;position: absolute;";
-//     //     console.log(cartasNpc[1]);
-
-//     // } else if (ccc === 'newN2') {
-//     //     document.getElementById('newN2').style.cssText = "visibility: hidden;";
-//     //     document.getElementById('imgNA').style.cssText = "visibility: visible;bottom: 0;box-shadow: 0px 0px 50px #ffff00;opacity: 1; height: 25rem; width: auto;position: absolute;";
-//     //     console.log(cartasNpc[2]);
-
-//     // };
-// };
-
-// function chocar() {
-//     $('#imgA').animate({
-//         left: "50%",
-//     }, 500, );
-//     $('#imgA').animate({
-//         rotate: "45"
-//     }, 1500, );
-// }
 
 //CREAR FUNCION QUE SELECCIONE NPC CARD Y LA MUESTRE
 // Datos de cartas seleccionadas
@@ -163,14 +119,10 @@ function traerdatosUser() {
             cartasUser.push(cardE.data[segundaCarta])[1];
             cartasUser.push(cardE.data[terceraCarta])[2];
             cartasUser.push(cardE.data[cuartaCarta])[3];
-            saveDatosUser();
         }
     }
 };
 
-function saveDatosUser() {
-    datosUser.push(cartasUser);
-};
 //FUNCION btn Npc
 function traerdatos() {
     const xhttp = new XMLHttpRequest();
@@ -179,38 +131,30 @@ function traerdatos() {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             let cardE = JSON.parse(this.responseText);
-            let primerCarta = NumerosAleatorios(1, 420) - 1;
-            imgNpc.setAttribute('src', cardE.data[primerCarta].card_images[0].image_url);
-            //Atributo del ID del elemento
+            let primerCarta = NumerosAleatorios(1, 420);
             cartasNpc.push(cardE.data[primerCarta])[0];
-            saveDatosNpc();
         }
     };
-};
-
-function saveDatosNpc() {
-    datosNPC.push(cartasNpc);
 };
 
 function NumerosAleatorios(min, max) {
     return Math.round(Math.random() * (max - min) + +Math.random());
 }
-
 console.log(cartasNpc);
 console.log(cartasUser);
 
 
-// function animarAtk() {
-//     // if (atkCardUser > atkCardNpc) {
-//     //     document.getElementById('imgD').style.cssText = "transform: scale(0.1); transition: all 2s ease";
-//     // } else if (atkCardUser < atkCardNpc) {
-//     //     document.getElementById('imgI').style.cssText = "transform: scale(0.1); transition: all 2s ease";
-//     // } else {
-//     //     console.log('Empateeee');
-//     // }
-//     $( "<div class='new'>aaaaaa</div>" ).appendTo( "body" );
-//  //URGENTE AGREGAR 10 cartas con appendTo
-// }
+function atkOrDef(p) {
+    $("#contenedor").empty();
+    $("<img class='carta elegir' src='' id='imgNpc'>").appendTo($(".tapete"));
+    imgNpc.setAttribute('src', cartasNpc[0].card_images[0].image_url);
+    console.log(cartasNpc[0]);
+    if (p.id === 'atk') {
+        console.log('soy atk' + cartasNpc[0].atk);
+    } else {
+        console.log('soy defensa' + cartasNpc[0].def);
+    }
+}
 
 function logout() {
     document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(0vh);";

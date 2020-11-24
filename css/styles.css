@@ -227,6 +227,10 @@ div#contenedor h3 {
   font-size: 2rem;
   font-weight: bold;
 }
+div#contenedor button {
+  height: 3rem;
+  margin: 1rem 1rem;
+}
 
 img#imgNpc {
   position: absolute;
