@@ -54,6 +54,7 @@ function acceso() {
 };
 
 function crearCartas() {
+    $('<h2>Elige tu primer carta!</h2>').appendTo("body");
     $("<img class='carta' src='' id='imgA' onclick='carta(this)'>").appendTo($(".tapete"));
     $("<img class='carta' src='' id='imgB' onclick='carta(this)'>").appendTo($(".tapete"));
     $("<img class='carta' src='' id='imgC' onclick='carta(this)'>").appendTo($(".tapete"));
@@ -67,25 +68,31 @@ function carta(p) {
         $('#imgA').addClass('elegir');
         $('#imgB, #imgC, #imgD').addClass('ocultar');
         optionCard(0);
+        $('#imgA').prop("onclick", null);
     } else if (ccc === 'imgB') {
         $('#imgB').addClass('elegir');
         $('#imgA, #imgC, #imgD').addClass('ocultar');
+        $('#imgB').prop("onclick", null);
         optionCard(1);
     } else if (ccc === 'imgC') {
         $('#imgC').addClass('elegir');
         $('#imgA, #imgB, #imgD').addClass('ocultar');
+        $('#imgC').prop("onclick", null);
         optionCard(2);
     } else if (ccc === 'imgD') {
         $('#imgD').addClass('elegir');
         $('#imgB, #imgC, #imgA').addClass('ocultar');
+        $('#imgD').prop("onclick", null);
         optionCard(3);
     };
+    $("body").children("h2").remove();
 };
 
 function optionCard(p) {
     $('<div id="contenedor"></div>').appendTo($(".tapete"));
-    $('<button id="def" onclick="atkOrDef(this)">Defender</button>').appendTo($("#contenedor"));
-    $('<button id="atk" onclick="atkOrDef(this)">Atacar</button>').appendTo($("#contenedor"));
+    // $('<button id="def" onclick="atkOrDef(this)">Defender</button>').appendTo($("#contenedor"));
+    // $('<button id="atk" onclick="atkOrDef(this)">Atacar</button>').appendTo($("#contenedor"));
+    $('<h4 onclick="atkOrDef(this)">Continuar a la carta de su oponente...</h4>').appendTo($("#contenedor"));
     $('<p id="desc"></p>').appendTo($("#contenedor"));
     $('<h3></h3>').appendTo($("#contenedor"));
     $("p").html(cartasUser[p].desc);
@@ -138,22 +145,17 @@ function traerdatos() {
 };
 
 function NumerosAleatorios(min, max) {
-    return Math.round(Math.random() * (max - min) + +Math.random());
+    return Math.round(Math.random() * (max - min) + +Math.random(420));
 }
 console.log(cartasNpc);
 console.log(cartasUser);
-
 
 function atkOrDef(p) {
     $("#contenedor").empty();
     $("<img class='carta elegir' src='' id='imgNpc'>").appendTo($(".tapete"));
     imgNpc.setAttribute('src', cartasNpc[0].card_images[0].image_url);
-    console.log(cartasNpc[0]);
-    if (p.id === 'atk') {
-        console.log('soy atk' + cartasNpc[0].atk);
-    } else {
-        console.log('soy defensa' + cartasNpc[0].def);
-    }
+    $('<p class="ver">Atk --></p>').appendTo("body");
+    $('<p class="ver"><-- Def</p>').appendTo("body");
 }
 
 function logout() {

@@ -207,7 +207,7 @@ img.carta {
 
 div.tapete {
     position: absolute;
-    bottom: 20vh;
+    bottom: 15vh;
     margin: 0 5vw;
     width: 90vw;
     height: 50vh;
@@ -229,9 +229,9 @@ div.tapete {
 div#contenedor {
     display: flex;
     flex-direction: column-reverse;
-    width: 50vw;
+    width: 100vw;
     height: 50vh;
-    margin: 0 0 0 50vw;
+    margin: 0 0 0 40vw;
     color: white;
         p {
             margin-bottom: 25%;
@@ -241,7 +241,6 @@ div#contenedor {
         }
         h3 {
             font-family: 'Cinzel', serif;
-            margin-bottom: 5%;
             font-size: 2rem;
             font-weight: bold;
         }
@@ -256,3 +255,46 @@ img#imgNpc {
     top: 0%;
     right: 0;
 }
+button#comenzar {
+    position: absolute;
+    top: 30vh;
+    right: 45vw;
+    width: 5rem;
+    height: 1rem;
+}
+
+h2 {
+    font-family: 'Cinzel', serif;
+    font-weight: lighter;
+    position: absolute;
+    top: 25vh;
+    color: white;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    width: 100%;
+    text-align: center;
+}
+
+h4 {
+    font-family: "Caveat", cursive;
+    color: white;
+    font-weight: lighter;
+    font-size: 1.5rem;   
+    cursor: pointer; 
+    transition: all 250ms ease-out;
+}
+
+h4:hover {
+    transition: all 250ms ease-in;
+    color: gold;
+    letter-spacing: 1px;
+}
+    p.ver {
+        position: absolute;
+        top: 25vh;
+        width: 100vw;
+        color: white;
+        font-size: 2rem;
+        text-align: center;
+    }
+
