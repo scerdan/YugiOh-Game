@@ -172,6 +172,8 @@ function userActionAtk() {
         console.log('EMPATE!');
     } else if (atkUser > atkNPC) {
         console.log(' HA GANADO!');
+        $('<div id="banner"></div>').appendTo("body");
+        $('<p>HA GANADO!!!</p>').appendTo($("#banner"));
     } else if (atkUser < atkNPC) {
         console.log(' HA PERDIDO!');
     }
@@ -183,12 +185,12 @@ function userActionDef() {
         console.log('EMPATE!');
     } else if (defUser > defNPC) {
         console.log(' HA GANADO!');
+        $('<div id="banner"></div>').appendTo("body");
+        $('<p>HA GANADO!!!</p>').appendTo($("#banner"));
     } else if (defUser < defNPC) {
         console.log(' HA PERDIDO!');
-    }
+    } else if (defUser === ) {
 }
-
-
 
 function logout() {
     document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(0vh);";

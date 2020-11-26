@@ -301,4 +301,21 @@ p.selectVer:hover {
   letter-spacing: 3px;
 }
 
+div#banner {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  z-index: 3;
+  top: 0%;
+}
+div#banner p {
+  font-size: 5rem;
+  text-align: center;
+  width: 100%;
+}
+
 /*# sourceMappingURL=styles.css.map */

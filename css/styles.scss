@@ -223,6 +223,7 @@ div.tapete {
     margin: auto 10vw;
     transform: scale(1.55);
 }
+
 .ocultar {
     display: none;
 }
@@ -234,21 +235,24 @@ div#contenedor {
     height: 50vh;
     margin: 0 0 0 40vw;
     color: white;
-        p {
-            margin-bottom: 25%;
-            font-weight: lighter;
-            font-family: "Caveat", cursive;
-            font-size: 1.3rem;
-        }
-        h3 {
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            font-weight: bold;
-        }
-        button {
-            height: 3rem;
-            margin: 1rem 1rem;
-        }
+
+    p {
+        margin-bottom: 25%;
+        font-weight: lighter;
+        font-family: "Caveat", cursive;
+        font-size: 1.3rem;
+    }
+
+    h3 {
+        font-family: 'Cinzel', serif;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    button {
+        height: 3rem;
+        margin: 1rem 1rem;
+    }
 }
 
 img#imgNpc {
@@ -256,6 +260,7 @@ img#imgNpc {
     top: 0%;
     right: 0;
 }
+
 button#comenzar {
     position: absolute;
     top: 30vh;
@@ -280,8 +285,8 @@ h4 {
     font-family: "Caveat", cursive;
     color: white;
     font-weight: lighter;
-    font-size: 1.5rem;   
-    cursor: pointer; 
+    font-size: 1.5rem;
+    cursor: pointer;
     transition: all 250ms ease-out;
 }
 
@@ -290,30 +295,48 @@ h4:hover {
     color: goldenrod;
     letter-spacing: 1px;
 }
-    p#ver {
-        font-family: "Caveat", cursive;
-        position: absolute;
-        top: 35vh;
-        width: 100vw;
-        font-size: 3rem;
-        text-align: center;
-        cursor: pointer;
-     }
 
-     p#verDef {
-        font-family: "Caveat", cursive;
-        position: absolute;
-        top: 75vh;
-        width: 100vw;
-        font-size: 3rem;
-        text-align: center;
-        transition: all 250ms ease-in;
-        cursor: pointer;
-     }
+p#ver {
+    font-family: "Caveat", cursive;
+    position: absolute;
+    top: 35vh;
+    width: 100vw;
+    font-size: 3rem;
+    text-align: center;
+    cursor: pointer;
+}
 
-     p.selectVer:hover {
-        transition: all 250ms ease-in;
-        color: goldenrod;
-        font-size: 3rem;
-        letter-spacing: 3px;
-     }
+p#verDef {
+    font-family: "Caveat", cursive;
+    position: absolute;
+    top: 75vh;
+    width: 100vw;
+    font-size: 3rem;
+    text-align: center;
+    transition: all 250ms ease-in;
+    cursor: pointer;
+}
+
+p.selectVer:hover {
+    transition: all 250ms ease-in;
+    color: goldenrod;
+    font-size: 3rem;
+    letter-spacing: 3px;
+}
+
+div#banner {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0, 0.7);
+    position: absolute;
+    z-index: 3;
+    top: 0%;
+    p {
+        font-size: 5rem;
+        text-align: center;
+        width: 100%;
+    }
+}
