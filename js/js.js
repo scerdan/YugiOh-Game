@@ -27,7 +27,7 @@ function enviar() {
         sessionStorage.setItem('Password', passUsuario);
         $("#suc").animate({
             left: "40%",
-        }, 1500, );
+        }, 500, );
         $("#suc").animate({
             opacity: '0',
         }, 1500, );
@@ -154,8 +154,8 @@ function atkOrDef(p) {
     $("#contenedor").empty();
     $("<img class='carta elegir' src='' id='imgNpc'>").appendTo($(".tapete"));
     imgNpc.setAttribute('src', cartasNpc[0].card_images[0].image_url);
-    $('<p class="ver">Atk --></p>').appendTo("body");
-    $('<p class="ver"><-- Def</p>').appendTo("body");
+    $('<p id="ver" class="selectVer">Atk --></p>').appendTo("body");
+    $('<p id="verDef" class="selectVer"><-- Def</p>').appendTo("body");
 }
 
 function logout() {

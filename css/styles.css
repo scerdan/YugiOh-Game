@@ -10,6 +10,7 @@ body {
   max-width: 100vw;
   max-height: 100vh;
   overflow: hidden;
+  color: white;
 }
 
 div.divBody {
@@ -268,17 +269,36 @@ h4 {
 
 h4:hover {
   transition: all 250ms ease-in;
-  color: gold;
+  color: goldenrod;
   letter-spacing: 1px;
 }
 
-p.ver {
+p#ver {
+  font-family: "Caveat", cursive;
   position: absolute;
-  top: 25vh;
+  top: 35vh;
   width: 100vw;
-  color: white;
-  font-size: 2rem;
+  font-size: 3rem;
   text-align: center;
+  cursor: pointer;
+}
+
+p#verDef {
+  font-family: "Caveat", cursive;
+  position: absolute;
+  top: 75vh;
+  width: 100vw;
+  font-size: 3rem;
+  text-align: center;
+  transition: all 250ms ease-in;
+  cursor: pointer;
+}
+
+p.selectVer:hover {
+  transition: all 250ms ease-in;
+  color: goldenrod;
+  font-size: 3rem;
+  letter-spacing: 3px;
 }
 
 /*# sourceMappingURL=styles.css.map */
