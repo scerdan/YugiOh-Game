@@ -90,21 +90,20 @@ function carta(p) {
 
 function optionCard(p) {
     $('<div id="contenedor"></div>').appendTo($(".tapete"));
-    // $('<button id="def" onclick="atkOrDef(this)">Defender</button>').appendTo($("#contenedor"));
-    // $('<button id="atk" onclick="atkOrDef(this)">Atacar</button>').appendTo($("#contenedor"));
     $('<h4 onclick="atkOrDef(this)">Continuar a la carta de su oponente...</h4>').appendTo($("#contenedor"));
     $('<p id="desc"></p>').appendTo($("#contenedor"));
     $('<h3></h3>').appendTo($("#contenedor"));
     $("p").html(cartasUser[p].desc);
     $("h3").html(cartasUser[p].name);
+        cartasElegidas.push(cartasUser[p], cartasNpc[0]);
+
 }
 
 //CREAR FUNCION QUE SELECCIONE NPC CARD Y LA MUESTRE
 // Datos de cartas seleccionadas
-let datosNPC = [];
-let datosUser = [];
 let cartasUser = [];
 let cartasNpc = [];
+let cartasElegidas = [];
 //FUNCION btn User
 function traerdatosUser() {
     const xhttp = new XMLHttpRequest();
@@ -156,7 +155,40 @@ function atkOrDef(p) {
     imgNpc.setAttribute('src', cartasNpc[0].card_images[0].image_url);
     $('<p id="ver" class="selectVer">Atk --></p>').appendTo("body");
     $('<p id="verDef" class="selectVer"><-- Def</p>').appendTo("body");
+    let btnAtacar = document.getElementById('ver');
+    let btnDefender = document.getElementById('verDef');
+    btnAtacar.addEventListener('click', function() {
+        userActionAtk();
+    });
+    btnDefender.addEventListener('click', function() {
+        userActionDef();
+    });
 }
+
+function userActionAtk() {
+    const atkUser = cartasElegidas[0].atk;
+    const atkNPC = cartasElegidas[1].atk;
+    if (atkUser === atkNPC) {
+        console.log('EMPATE!');
+    } else if (atkUser > atkNPC) {
+        console.log(' HA GANADO!');
+    } else if (atkUser < atkNPC) {
+        console.log(' HA PERDIDO!');
+    }
+};
+function userActionDef() {
+    const defUser = cartasElegidas[0].def;
+    const defNPC = cartasElegidas[1].def;
+    if (defUser === defNPC) {
+        console.log('EMPATE!');
+    } else if (defUser > defNPC) {
+        console.log(' HA GANADO!');
+    } else if (defUser < defNPC) {
+        console.log(' HA PERDIDO!');
+    }
+}
+
+
 
 function logout() {
     document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(0vh);";
