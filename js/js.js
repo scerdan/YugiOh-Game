@@ -60,22 +60,22 @@ const carta = (p) => {
     let ccc = p.id;
     if (ccc === 'imgA') {
         $('#imgA').addClass('elegir');
-        $('#imgB, #imgC, #imgD').addClass('ocultar');
+        $('#imgB, #imgC, #imgD').remove();
         optionCard(0);
         $('#imgA').prop("onclick", null);
     } else if (ccc === 'imgB') {
         $('#imgB').addClass('elegir');
-        $('#imgA, #imgC, #imgD').addClass('ocultar');
+        $('#imgA, #imgC, #imgD').remove();
         $('#imgB').prop("onclick", null);
         optionCard(1);
     } else if (ccc === 'imgC') {
         $('#imgC').addClass('elegir');
-        $('#imgA, #imgB, #imgD').addClass('ocultar');
+        $('#imgA, #imgB, #imgD').remove();
         $('#imgC').prop("onclick", null);
         optionCard(2);
     } else if (ccc === 'imgD') {
         $('#imgD').addClass('elegir');
-        $('#imgB, #imgC, #imgA').addClass('ocultar');
+        $('#imgB, #imgC, #imgA').remove();
         $('#imgD').prop("onclick", null);
         optionCard(3);
     };
@@ -136,7 +136,7 @@ const traerdatos = function () {
 let NumerosAleatorios = (min, max) => Math.round(Math.random() * (max - min) + +Math.random(max));
 console.log(cartasNpc);
 console.log(cartasUser);
-const atkOrDef = (p) => {
+const atkOrDef = () => {
     $("#contenedor").empty();
     $("<img class='carta elegir' src='' id='imgNpc'>").appendTo($(".tapete"));
     imgNpc.setAttribute('src', cartasNpc[0].card_images[0].image_url);
@@ -145,63 +145,48 @@ const atkOrDef = (p) => {
     let btnAtacar = document.getElementById('ver');
     let btnDefender = document.getElementById('verDef');
     btnAtacar.addEventListener('click', function () {
-        userActionAtk();
+        userAction(cartasElegidas[0].atk, cartasElegidas[1].atk);
     });
     btnDefender.addEventListener('click', function () {
-        userActionDef();
+        userAction(cartasElegidas[0].def, cartasElegidas[1].def);
     });
 }
-const userActionAtk = function () {
-    const atkUser = cartasElegidas[0].atk;
-    const atkNPC = cartasElegidas[1].atk;
-    if (atkUser === atkNPC) {
+const userAction = function (a, b) {
+    console.log(a, b);
+    if (a === b) {
         console.log('EMPATE!');
         $('<div id="banner"></div>').appendTo("body");
         $('<p>EMPATE</p>').appendTo($("#banner"));
-        //Agregar f(x) para animar el banner
-        bannerAnimate(0, 1);
-        //Pasar a la siguiente carta (hasta agotar las 4)
-    } else if (atkUser > atkNPC) {
+        bannerAnimate(0);
+    } else if (a > b) {
         console.log(' HA GANADO!');
         $('<div id="banner"></div>').appendTo("body");
         $('<p>HA GANADO!!!</p>').appendTo($("#banner"));
         bannerAnimate(1);
-    } else if (atkUser < atkNPC) {
+    } else if (a < b) {
         $('<div id="banner"></div>').appendTo("body");
         $('<p>HA PERDIDO!</p>').appendTo($("#banner"));
-        console.log(' HA PERDIDO!');
-        bannerAnimate(0);
+        bannerAnimate(2);
     };
 };
-const bannerAnimate = (a, b) => {
-    $('#banner').fadeOut(2000, function () {
-        console.log(a && b);
-        if (a === 1) {
-            $(".tapete").find("img:last").remove();
-        } else if (a === 0) {
-            $(".tapete").find("img:first").remove();
-        } else if (a == 0 || b == 1) {
+        //Pasar a la siguiente carta (hasta agotar las 4)
+const bannerAnimate = (a) => {
+    console.log(a);
+    let padreHTML = document.getElementsByClassName('tapete');
+        $('#banner').fadeOut(2000, function () {
+        if (a === 0) {
+            console.log('se borran ambas cartas');
             $(".tapete").children("img").remove();
+        } else if (a === 1) {
+            console.log('se borrar carta npc');
+            $(".tapete").find("img:last").remove();
+        } else if (a === 2) {
+            console.log('se borra carta user');
+            $(".tapete").find("img:first").remove();
         }
     });
 }
-const userActionDef = function () {
-    const defUser = cartasElegidas[0].def;
-    const defNPC = cartasElegidas[1].def;
-    if (defUser === defNPC) {
-        console.log('EMPATE!');
-        $('<div id="banner"></div>').appendTo("body");
-        $('<p>EMPATE</p>').appendTo($("#banner"));
-    } else if (defUser > defNPC) {
-        console.log(' HA GANADO!');
-        $('<div id="banner"></div>').appendTo("body");
-        $('<p>HA GANADO!!!</p>').appendTo($("#banner"));
-    } else if (defUser < defNPC) {
-        $('<div id="banner"></div>').appendTo("body");
-        $('<p>HA PERDIDO!</p>').appendTo($("#banner"));
-        console.log(' HA PERDIDO!');
-    };
-};
+
 const logout = () => {
     document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(0vh);";
     console.log('Vuelva Pronto!');
