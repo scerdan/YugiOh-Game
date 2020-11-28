@@ -173,14 +173,14 @@ const userActionAtk = function () {
         bannerAnimate(0);
     };
 };
-const bannerAnimate = (p) => {
+const bannerAnimate = (a, b) => {
     $('#banner').fadeOut(2000, function () {
-        console.log(p);
-        if (p === 1) {
+        console.log(a && b);
+        if (a === 1) {
             $(".tapete").find("img:last").remove();
-        } else if (p == 0) {
+        } else if (a === 0) {
             $(".tapete").find("img:first").remove();
-        } else if (p == 0 || p == 1) {
+        } else if (a == 0 || b == 1) {
             $(".tapete").children("img").remove();
         }
     });
