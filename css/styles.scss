@@ -334,9 +334,14 @@ div#banner {
     position: absolute;
     z-index: 3;
     top: 0%;
-    p {
+     p {
         font-size: 5rem;
         text-align: center;
         width: 100%;
+        color: goldenrod;
+    }
+    .mover {
+        visibility: hidden;
+        transition: visibility 1s ease-in-out;
     }
 }

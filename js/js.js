@@ -12,12 +12,9 @@ window.addEventListener('click', function (e) {
         cerrarModal();
     }
 });
-
-function cerrarModal() {
-    fondo.style.visibility = 'hidden';
-}
+const cerrarModal = () => fondo.style.visibility = 'hidden';
 //Se registra los usuarios in sessionStorage
-function enviar() {
+const enviar = function () {
     let correoUsuario = document.getElementById("mail").value;
     let passUsuario = document.getElementById("pass").value;
     if (correoUsuario == '' || passUsuario == '') {
@@ -34,7 +31,7 @@ function enviar() {
     }
 };
 //Se loguea los usuarios in sessionStorage
-function acceso() {
+const acceso = function () {
     let mailV = document.getElementById('mail').value;
     let passV = document.getElementById('pass').value;
     if (mailV == sessionStorage.getItem('Mail') && passV == sessionStorage.getItem('Password')) {
@@ -52,19 +49,16 @@ function acceso() {
         alert('Debe estar registrado para poder Ingresar:');
     }
 };
-
-function crearCartas() {
+const crearCartas = () => {
     $('<h2>Elige tu primer carta!</h2>').appendTo("body");
     $("<img class='carta' src='' id='imgA' onclick='carta(this)'>").appendTo($(".tapete"));
     $("<img class='carta' src='' id='imgB' onclick='carta(this)'>").appendTo($(".tapete"));
     $("<img class='carta' src='' id='imgC' onclick='carta(this)'>").appendTo($(".tapete"));
     $("<img class='carta' src='' id='imgD' onclick='carta(this)'>").appendTo($(".tapete"));
 };
-
-function carta(p) {
+const carta = (p) => {
     let ccc = p.id;
     if (ccc === 'imgA') {
-        // console.log(cartasUser[0]);
         $('#imgA').addClass('elegir');
         $('#imgB, #imgC, #imgD').addClass('ocultar');
         optionCard(0);
@@ -87,25 +81,23 @@ function carta(p) {
     };
     $("body").children("h2").remove();
 };
-
-function optionCard(p) {
+const optionCard = (p) => {
     $('<div id="contenedor"></div>').appendTo($(".tapete"));
     $('<h4 onclick="atkOrDef(this)">Continuar a la carta de su oponente...</h4>').appendTo($("#contenedor"));
     $('<p id="desc"></p>').appendTo($("#contenedor"));
     $('<h3></h3>').appendTo($("#contenedor"));
     $("p").html(cartasUser[p].desc);
     $("h3").html(cartasUser[p].name);
-        cartasElegidas.push(cartasUser[p], cartasNpc[0]);
+    cartasElegidas.push(cartasUser[p], cartasNpc[0]);
 
 }
-
 //CREAR FUNCION QUE SELECCIONE NPC CARD Y LA MUESTRE
 // Datos de cartas seleccionadas
 let cartasUser = [];
 let cartasNpc = [];
 let cartasElegidas = [];
 //FUNCION btn User
-function traerdatosUser() {
+const traerdatosUser = function () {
     const xhttp = new XMLHttpRequest();
     xhttp.open('GET', 'https://db.ygoprodeck.com/api/v7/cardinfo.php?type=XYZ%20Monster', true);
     xhttp.send();
@@ -128,9 +120,8 @@ function traerdatosUser() {
         }
     }
 };
-
 //FUNCION btn Npc
-function traerdatos() {
+const traerdatos = function () {
     const xhttp = new XMLHttpRequest();
     xhttp.open('GET', 'https://db.ygoprodeck.com/api/v7/cardinfo.php?type=XYZ%20Monster', true);
     xhttp.send();
@@ -142,14 +133,10 @@ function traerdatos() {
         }
     };
 };
-
-function NumerosAleatorios(min, max) {
-    return Math.round(Math.random() * (max - min) + +Math.random(420));
-}
+let NumerosAleatorios = (min, max) => Math.round(Math.random() * (max - min) + +Math.random(max));
 console.log(cartasNpc);
 console.log(cartasUser);
-
-function atkOrDef(p) {
+const atkOrDef = (p) => {
     $("#contenedor").empty();
     $("<img class='carta elegir' src='' id='imgNpc'>").appendTo($(".tapete"));
     imgNpc.setAttribute('src', cartasNpc[0].card_images[0].image_url);
@@ -157,42 +144,65 @@ function atkOrDef(p) {
     $('<p id="verDef" class="selectVer"><-- Def</p>').appendTo("body");
     let btnAtacar = document.getElementById('ver');
     let btnDefender = document.getElementById('verDef');
-    btnAtacar.addEventListener('click', function() {
+    btnAtacar.addEventListener('click', function () {
         userActionAtk();
     });
-    btnDefender.addEventListener('click', function() {
+    btnDefender.addEventListener('click', function () {
         userActionDef();
     });
 }
-
-function userActionAtk() {
+const userActionAtk = function () {
     const atkUser = cartasElegidas[0].atk;
     const atkNPC = cartasElegidas[1].atk;
     if (atkUser === atkNPC) {
         console.log('EMPATE!');
+        $('<div id="banner"></div>').appendTo("body");
+        $('<p>EMPATE</p>').appendTo($("#banner"));
+        //Agregar f(x) para animar el banner
+        bannerAnimate(0, 1);
+        //Pasar a la siguiente carta (hasta agotar las 4)
     } else if (atkUser > atkNPC) {
         console.log(' HA GANADO!');
         $('<div id="banner"></div>').appendTo("body");
         $('<p>HA GANADO!!!</p>').appendTo($("#banner"));
+        bannerAnimate(1);
     } else if (atkUser < atkNPC) {
+        $('<div id="banner"></div>').appendTo("body");
+        $('<p>HA PERDIDO!</p>').appendTo($("#banner"));
         console.log(' HA PERDIDO!');
-    }
+        bannerAnimate(0);
+    };
 };
-function userActionDef() {
+const bannerAnimate = (p) => {
+    $('#banner').fadeOut(2000, function () {
+        console.log(p);
+        if (p === 1) {
+            $(".tapete").find("img:last").remove();
+        } else if (p == 0) {
+            $(".tapete").find("img:first").remove();
+        } else if (p == 0 || p == 1) {
+            $(".tapete").children("img").remove();
+        }
+    });
+}
+const userActionDef = function () {
     const defUser = cartasElegidas[0].def;
     const defNPC = cartasElegidas[1].def;
     if (defUser === defNPC) {
         console.log('EMPATE!');
+        $('<div id="banner"></div>').appendTo("body");
+        $('<p>EMPATE</p>').appendTo($("#banner"));
     } else if (defUser > defNPC) {
         console.log(' HA GANADO!');
         $('<div id="banner"></div>').appendTo("body");
         $('<p>HA GANADO!!!</p>').appendTo($("#banner"));
     } else if (defUser < defNPC) {
+        $('<div id="banner"></div>').appendTo("body");
+        $('<p>HA PERDIDO!</p>').appendTo($("#banner"));
         console.log(' HA PERDIDO!');
-    } else if (defUser === ) {
-}
-
-function logout() {
+    };
+};
+const logout = () => {
     document.getElementById('cortina').style.cssText = "transition: all 2s ease;transform: translateY(0vh);";
     console.log('Vuelva Pronto!');
     sessionStorage.clear();
