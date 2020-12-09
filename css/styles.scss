@@ -326,7 +326,7 @@ div#banner {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(0, 0, 0, 0.7);
+    background-color: rgb(0, 0, 0, 0.85);
     position: absolute;
     z-index: 3;
     top: 0%;
@@ -340,4 +340,14 @@ div#banner {
         visibility: hidden;
         transition: visibility 1s ease-in-out;
     }
+}
+
+p#siguiente {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    font-weight: lighter;
+    font-family: "Caveat", cursive;
+    font-size: 3rem;
 }

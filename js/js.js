@@ -20,8 +20,8 @@ const enviar = function () {
     if (correoUsuario == '' || passUsuario == '') {
         alert("Debe ingresar un correo o pass validos");
     } else {
-        sessionStorage.setItem('Mail', correoUsuario);
-        sessionStorage.setItem('Password', passUsuario);
+        localStorage.setItem('Mail', correoUsuario);
+        localStorage.setItem('Password', passUsuario);
         $("#suc").animate({
             left: "40%",
         }, 500, );
@@ -34,7 +34,7 @@ const enviar = function () {
 const acceso = function () {
     let mailV = document.getElementById('mail').value;
     let passV = document.getElementById('pass').value;
-    if (mailV == sessionStorage.getItem('Mail') && passV == sessionStorage.getItem('Password')) {
+    if (mailV == localStorage.getItem('Mail') && passV == localStorage.getItem('Password')) {
         console.log('Estas adentro');
         traerdatosUser();
         traerdatos();
@@ -96,6 +96,7 @@ const optionCard = (p) => {
 let cartasUser = [];
 let cartasNpc = [];
 let cartasElegidas = [];
+
 //FUNCION btn User
 const traerdatosUser = function () {
     const xhttp = new XMLHttpRequest();
@@ -152,7 +153,6 @@ const atkOrDef = () => {
     });
 }
 const userAction = function (a, b) {
-    console.log(a, b);
     if (a === b) {
         console.log('EMPATE!');
         $('<div id="banner"></div>').appendTo("body");
@@ -171,19 +171,23 @@ const userAction = function (a, b) {
 };
         //Pasar a la siguiente carta (hasta agotar las 4)
 const bannerAnimate = (a) => {
-    console.log(a);
-    let padreHTML = document.getElementsByClassName('tapete');
-        $('#banner').fadeOut(2000, function () {
+        $('#banner').fadeOut(2500, function () {
         if (a === 0) {
-            console.log('se borran ambas cartas');
-            $(".tapete").children("img").remove();
+            siguiente();
         } else if (a === 1) {
-            console.log('se borrar carta npc');
-            $(".tapete").find("img:last").remove();
+            siguiente();
         } else if (a === 2) {
-            console.log('se borra carta user');
-            $(".tapete").find("img:first").remove();
+            siguiente();
         }
+    });
+}
+
+let siguiente = () => {
+    $(".tapete, .selectVer").remove();
+    $('<p id="siguiente">- vuelva pronto... -</p>').appendTo("body");
+    let betSiguiente = document.getElementById('siguiente');
+    betSiguiente.addEventListener('click', function () {
+        logout();
     });
 }
 
