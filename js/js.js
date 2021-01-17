@@ -36,12 +36,11 @@ const acceso = function () {
     let passV = document.getElementById('pass').value;
     if (mailV == localStorage.getItem('Mail') && passV == localStorage.getItem('Password')) {
         console.log('Estas adentro');
-        traerdatosUser();
-        traerdatos();
+        traerDatos();
         $("header").children("img").remove();
         $("<div class='tapete'></div>").appendTo("body");
         cerrarModal();
-        crearCartas();
+        $('<h2>Elige tu primer carta!</h2>').appendTo("body");
         $("#cortina").animate({
             top: "-100vh"
         }, 1250);
@@ -49,13 +48,18 @@ const acceso = function () {
         alert('Debe estar registrado para poder Ingresar:');
     }
 };
-const crearCartas = () => {
-    $('<h2>Elige tu primer carta!</h2>').appendTo("body");
-    $("<img class='carta' src='' id='imgA' onclick='carta(this)'>").appendTo($(".tapete"));
-    $("<img class='carta' src='' id='imgB' onclick='carta(this)'>").appendTo($(".tapete"));
-    $("<img class='carta' src='' id='imgC' onclick='carta(this)'>").appendTo($(".tapete"));
-    $("<img class='carta' src='' id='imgD' onclick='carta(this)'>").appendTo($(".tapete"));
+const pedirCartas = () => {
+    let numCartaAzar = NumerosAleatorios(0, 12);
+    const imgCarta = document.createElement('img');
+    imgCarta.src = cartasI[numCartaAzar].card_images[0].image_url;
+    imgCarta.alt = "Carta YuGiHo";
+    imgCarta.className = 'carta';
+    document.getElementsByClassName('tapete')[0].append(imgCarta);
+    imgCarta.onclick = function() {
+        alert("Soy un botón");
+      }
 };
+
 const carta = (p) => {
     let ccc = p.id;
     if (ccc === 'imgA') {
@@ -81,6 +85,7 @@ const carta = (p) => {
     };
     $("body").children("h2").remove();
 };
+
 const optionCard = (p) => {
     $('<div id="contenedor"></div>').appendTo($(".tapete"));
     $('<h4 onclick="atkOrDef(this)">Continuar a la carta de su oponente...</h4>').appendTo($("#contenedor"));
@@ -89,54 +94,31 @@ const optionCard = (p) => {
     $("p").html(cartasUser[p].desc);
     $("h3").html(cartasUser[p].name);
     cartasElegidas.push(cartasUser[p], cartasNpc[0]);
-
 }
+
 //CREAR FUNCION QUE SELECCIONE NPC CARD Y LA MUESTRE
 // Datos de cartas seleccionadas
-let cartasUser = [];
-let cartasNpc = [];
+let cartasI = [];
 let cartasElegidas = [];
 
-//FUNCION btn User
-const traerdatosUser = function () {
+const traerDatos = function () {
     const xhttp = new XMLHttpRequest();
     xhttp.open('GET', 'https://db.ygoprodeck.com/api/v7/cardinfo.php?type=XYZ%20Monster', true);
     xhttp.send();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            let cardE = JSON.parse(this.responseText);
-            let primerCarta = NumerosAleatorios(1, 420);
-            let segundaCarta = NumerosAleatorios(1, 420);
-            let terceraCarta = NumerosAleatorios(1, 420);
-            let cuartaCarta = NumerosAleatorios(1, 420);
-            //Atributo del ID del elemento
-            imgA.setAttribute('src', cardE.data[primerCarta].card_images[0].image_url);
-            imgB.setAttribute('src', cardE.data[segundaCarta].card_images[0].image_url);
-            imgC.setAttribute('src', cardE.data[terceraCarta].card_images[0].image_url);
-            imgD.setAttribute('src', cardE.data[cuartaCarta].card_images[0].image_url);
-            cartasUser.push(cardE.data[primerCarta])[0];
-            cartasUser.push(cardE.data[segundaCarta])[1];
-            cartasUser.push(cardE.data[terceraCarta])[2];
-            cartasUser.push(cardE.data[cuartaCarta])[3];
-        }
-    }
-};
-//FUNCION btn Npc
-const traerdatos = function () {
-    const xhttp = new XMLHttpRequest();
-    xhttp.open('GET', 'https://db.ygoprodeck.com/api/v7/cardinfo.php?type=XYZ%20Monster', true);
-    xhttp.send();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            let cardE = JSON.parse(this.responseText);
-            let primerCarta = NumerosAleatorios(1, 420);
-            cartasNpc.push(cardE.data[primerCarta])[0];
+            let card = JSON.parse(this.responseText);
+            for (let i = 0; i <= 12 ; i++) {
+                let numAzar = NumerosAleatorios(i, 420);
+                cartasI.push(card.data[numAzar])[i];
+            }
         }
     };
 };
+
 let NumerosAleatorios = (min, max) => Math.round(Math.random() * (max - min) + +Math.random(max));
-console.log(cartasNpc);
-console.log(cartasUser);
+console.log(cartasI);
+
 const atkOrDef = () => {
     $("#contenedor").empty();
     $("<img class='carta elegir' src='' id='imgNpc'>").appendTo($(".tapete"));
